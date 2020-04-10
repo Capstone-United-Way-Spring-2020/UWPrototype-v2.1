@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.DepartmentModel>
 
-@{
-    ViewBag.Title = "Department Overview";
-}
-
 <h2>Departments</h2>
 
 <p>
@@ -15,22 +11,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Org Code", "SortDepartmentList", "Home", new { name = "OrgCode" }, null)
+            @Html.ActionLink("Org Code", "SortDescendingDepartmentList", "Home", new { name = "OrgCode" }, null)
         </th>
         <th>
-            @Html.ActionLink("Division", "SortDepartmentList", "Home", new { name = "Division" }, null)
+            @Html.ActionLink("Division", "SortDescendingDepartmentList", "Home", new { name = "Division" }, null)
         </th>
         <th>
-            @Html.ActionLink("Department", "SortDepartmentList", "Home", new { name = "Department" }, null)
+            @Html.ActionLink("Department", "SortDescendingDepartmentList", "Home", new { name = "Department" }, null)
         </th>
         <th>
-            @Html.ActionLink("UW Coordinator 3", "SortDepartmentList", "Home", new { name = "UW3" }, null)
+            @Html.ActionLink("UW Coordinator 3", "SortDescendingDepartmentList", "Home", new { name = "UW3" }, null)
         </th>
         <th>
-            @Html.ActionLink("UW Coordinator 2", "SortDepartmentList", "Home", new { name = "UW2" }, null)
+            @Html.ActionLink("UW Coordinator 2", "SortDescendingDepartmentList", "Home", new { name = "UW2" }, null)
         </th>
         <th>
-            @Html.ActionLink("UW Coordinator 1", "SortDepartmentList", "Home", new { name = "UW1" }, null)
+            @Html.ActionLink("UW Coordinator 1", "SortDescendingDepartmentList", "Home", new { name = "UW1" }, null)
         </th>
         <th></th>
     </tr>
@@ -64,3 +60,4 @@
     }
 
 </table>
+

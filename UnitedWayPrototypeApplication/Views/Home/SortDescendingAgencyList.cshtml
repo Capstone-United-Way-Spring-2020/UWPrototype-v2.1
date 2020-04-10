@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.AgencyModel>
 
-@{
-    ViewBag.Title = "Agency Overview";
-}
-
 <h2>Agencies</h2>
 
 <p>
@@ -12,10 +8,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Agency ID", "SortAgencyList", "Home", new { name = "AgencyID" }, null)
+            @Html.ActionLink("Agency ID", "Agency", "Home", new { name = "AgencyID" }, null)
         </th>
         <th>
-            @Html.ActionLink("Agency Name", "SortAgencyList", "Home", new { name = "AgencyName" }, null)
+            @Html.ActionLink("Agency Name", "Agency", "Home", new { name = "AgencyName" }, null)
         </th>
         <th></th>
     </tr>
