@@ -199,6 +199,8 @@
     <Content Include="Views\Home\DepartmentImport.cshtml" />
     <Content Include="Views\Home\SortContributionList.cshtml" />
     <Content Include="Views\Home\SortDescendingContributionList.cshtml" />
+    <Content Include="Views\Home\SortEmployeeList.cshtml" />
+    <Content Include="Views\Home\SortDescendingEmployeeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.EmployeeModel>
+
+    <h2>Employees</h2>
+
+<p>
+    @Html.ActionLink("Create New Employee", "EmployeeCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("CWID", "SortDescendingEmployeeList", "Home", new { name = "CWID" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("First Name", "SortDescendingEmployeeList", "Home", new { name = "EmployeeFirstName" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "SortDescendingEmployeeList", "Home", new { name = "EmployeeLastName" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("MI", "SortDescendingEmployeeList", "Home", new { name = "EmployeeMI" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Street Address", "SortDescendingEmployeeList", "Home", new { name = "StreetAddress" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("City", "SortDescendingEmployeeList", "Home", new { name = "EmployeeCity" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("State", "SortDescendingEmployeeList", "Home", new { name = "EmployeeState" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Zip", "SortDescendingEmployeeList", "Home", new { name = "EmployeeZip" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Payroll", "SortDescendingEmployeeList", "Home", new { name = "Payroll" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Salary", "SortDescendingEmployeeList", "Home", new { name = "Salary" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("PO Box", "SortDescendingEmployeeList", "Home", new { name = "POBox" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("PO Box City", "SortDescendingEmployeeList", "Home", new { name = "POBoxCity" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("PO Box State", "SortDescendingEmployeeList", "Home", new { name = "POBoxState" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Org Code", "SortDescendingEmployeeList", "Home", new { name = "OrgCode" }, null)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CWID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeLastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeMI)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StreetAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeCity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeState)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeZip)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Payroll)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Salary)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.POBox)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.POBoxCity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.POBoxState)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrgCode)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+}
+
+</table>

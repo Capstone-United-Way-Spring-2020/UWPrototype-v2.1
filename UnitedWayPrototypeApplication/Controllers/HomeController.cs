@@ -60,7 +60,6 @@ namespace UnitedWayPrototypeApplication.Controllers
                     OrgCode = row.OrgCode,
                     EmployeeStatus = row.EmployeeStatus,
                     EmployeeDateCreated = row.EmployeeDateCreated,
-                    //GivingYear = row.GivingYear,
                     Payroll = row.Payroll,
                     Salary = row.Salary,
                     POBox = row.POBox,
@@ -72,6 +71,167 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View(employees); 
         }
 
+        public ActionResult SortEmployeeList(string name)
+        {
+            ViewBag.Message = "Sort Employee List";
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.EmployeeProcessor.LoadEmployees();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                employees.Add(new EmployeeModel
+                {
+                    CWID = row.CWID,
+                    EmployeeFirstName = row.EmployeeFirstName,
+                    EmployeeLastName = row.EmployeeLastName,
+                    EmployeeMI = row.EmployeeMI,
+                    StreetAddress = row.StreetAddress,
+                    EmployeeCity = row.EmployeeCity,
+                    EmployeeState = row.EmployeeState,
+                    EmployeeZip = row.EmployeeZip,
+                    EmployeeDepartment = row.EmployeeDepartment,
+                    OrgCode = row.OrgCode,
+                    EmployeeStatus = row.EmployeeStatus,
+                    EmployeeDateCreated = row.EmployeeDateCreated,
+                    Payroll = row.Payroll,
+                    Salary = row.Salary,
+                    POBox = row.POBox,
+                    POBoxCity = row.POBoxCity,
+                    POBoxState = row.POBoxState
+                });
+            }
+            switch (name)
+            {
+                case "CWID":
+                    employees = employees.OrderBy(x => x.CWID).ToList();
+                    break;
+                case "EmployeeFirstName":
+                    employees = employees.OrderBy(x => x.EmployeeFirstName).ToList();
+                    break;
+                case "EmployeeLastName":
+                    employees = employees.OrderBy(x => x.EmployeeLastName).ToList();
+                    break;
+                case "EmployeeMI":
+                    employees = employees.OrderBy(x => x.EmployeeMI).ToList();
+                    break;
+                case "StreetAddress":
+                    employees = employees.OrderBy(x => x.StreetAddress).ToList();
+                    break;
+                case "EmployeeCity":
+                    employees = employees.OrderBy(x => x.EmployeeCity).ToList();
+                    break;
+                case "EmployeeState":
+                    employees = employees.OrderBy(x => x.EmployeeState).ToList();
+                    break;
+                case "EmployeeZip":
+                    employees = employees.OrderBy(x => x.EmployeeZip).ToList();
+                    break;
+                case "Payroll":
+                    employees = employees.OrderBy(x => x.Payroll).ToList();
+                    break;
+                case "Salary":
+                    employees = employees.OrderBy(x => x.Salary).ToList();
+                    break;
+                case "POBox":
+                    employees = employees.OrderBy(x => x.POBox).ToList();
+                    break;
+                case "POBoxCity":
+                    employees = employees.OrderBy(x => x.POBoxCity).ToList();
+                    break;
+                case "POBoxState":
+                    employees = employees.OrderBy(x => x.POBoxState).ToList();
+                    break;
+                case "OrgCode":
+                    employees = employees.OrderBy(x => x.OrgCode).ToList();
+                    break;
+            }
+
+
+            return View(employees);
+        }
+
+        public ActionResult SortDescendingEmployeeList(string name)
+        {
+            ViewBag.Message = "Sort Descending Employee List";
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.EmployeeProcessor.LoadEmployees();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                employees.Add(new EmployeeModel
+                {
+                    CWID = row.CWID,
+                    EmployeeFirstName = row.EmployeeFirstName,
+                    EmployeeLastName = row.EmployeeLastName,
+                    EmployeeMI = row.EmployeeMI,
+                    StreetAddress = row.StreetAddress,
+                    EmployeeCity = row.EmployeeCity,
+                    EmployeeState = row.EmployeeState,
+                    EmployeeZip = row.EmployeeZip,
+                    EmployeeDepartment = row.EmployeeDepartment,
+                    OrgCode = row.OrgCode,
+                    EmployeeStatus = row.EmployeeStatus,
+                    EmployeeDateCreated = row.EmployeeDateCreated,
+                    Payroll = row.Payroll,
+                    Salary = row.Salary,
+                    POBox = row.POBox,
+                    POBoxCity = row.POBoxCity,
+                    POBoxState = row.POBoxState
+                });
+            }
+            switch (name)
+            {
+                case "CWID":
+                    employees = employees.OrderByDescending(x => x.CWID).ToList();
+                    break;
+                case "EmployeeFirstName":
+                    employees = employees.OrderByDescending(x => x.EmployeeFirstName).ToList();
+                    break;
+                case "EmployeeLastName":
+                    employees = employees.OrderByDescending(x => x.EmployeeLastName).ToList();
+                    break;
+                case "EmployeeMI":
+                    employees = employees.OrderByDescending(x => x.EmployeeMI).ToList();
+                    break;
+                case "StreetAddress":
+                    employees = employees.OrderByDescending(x => x.StreetAddress).ToList();
+                    break;
+                case "EmployeeCity":
+                    employees = employees.OrderByDescending(x => x.EmployeeCity).ToList();
+                    break;
+                case "EmployeeState":
+                    employees = employees.OrderByDescending(x => x.EmployeeState).ToList();
+                    break;
+                case "EmployeeZip":
+                    employees = employees.OrderByDescending(x => x.EmployeeZip).ToList();
+                    break;
+                case "Payroll":
+                    employees = employees.OrderByDescending(x => x.Payroll).ToList();
+                    break;
+                case "Salary":
+                    employees = employees.OrderByDescending(x => x.Salary).ToList();
+                    break;
+                case "POBox":
+                    employees = employees.OrderByDescending(x => x.POBox).ToList();
+                    break;
+                case "POBoxCity":
+                    employees = employees.OrderByDescending(x => x.POBoxCity).ToList();
+                    break;
+                case "POBoxState":
+                    employees = employees.OrderByDescending(x => x.POBoxState).ToList();
+                    break;
+                case "OrgCode":
+                    employees = employees.OrderByDescending(x => x.OrgCode).ToList();
+                    break;
+            }
+
+
+            return View(employees);
+        }
         //form for creating an employee
         public ActionResult EmployeeCreate()
         {
