@@ -367,9 +367,13 @@ namespace UnitedWayPrototypeApplication.Controllers
         }
 
 
-        public ActionResult EditAgency()
+        public ActionResult EditAgency(string id, string name)
         {
             ViewBag.Message = "Edit Agency";
+            AgencyModel agency = new UnitedWayPrototypeApplication.Models.AgencyModel();
+            agency.AgencyID = Int32.Parse(id);
+            agency.AgencyName = name;
+            ViewData["Agency"] = agency;
             return View();
         }
 

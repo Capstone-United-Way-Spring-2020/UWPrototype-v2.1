@@ -6,27 +6,30 @@
 
 <h2>EditAgency</h2>
 
+@{ 
+    var agency = ViewData["Agency"] as UnitedWayPrototypeApplication.Models.AgencyModel;
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AgencyModel</h4>
+ 
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.AgencyID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AgencyID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AgencyID, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AgencyID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.AgencyID, new { @readonly = true, @Value = agency.AgencyID })
+            @Html.ValidationMessageFor(model => model.AgencyID, "", new { @class = "text-danger" })
         </div>
+    </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.AgencyName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AgencyName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AgencyName, new { htmlAttributes = new { @class = "form-control", @Value = agency.AgencyName } })
                 @Html.ValidationMessageFor(model => model.AgencyName, "", new { @class = "text-danger" })
             </div>
         </div>
