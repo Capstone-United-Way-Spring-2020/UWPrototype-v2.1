@@ -1,0 +1,39 @@
+﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.AgencyModel>
+
+<h2>Agencies</h2>
+
+<p>
+    @Html.ActionLink("Create New Agency", "CreateAgency")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Agency ID", "SortDescendingAgencyList", "Home", new { name = "AgencyID" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Agency Name", "SortDescendingAgencyList", "Home", new { name = "AgencyName" }, null)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.AgencyID > 0)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgencyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgencyName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditAgency", new { /* id=item.PrimaryKey */ }) |
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -282,6 +282,67 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View(agencies);
         }
 
+        public ActionResult SortAgencyList(string name)
+        {
+            ViewBag.Message = "Sort Agency List";
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.AgencyProcessor.LoadAgencies();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<AgencyModel> agencies = new List<AgencyModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                agencies.Add(new AgencyModel
+                {
+                    AgencyID = row.AgencyID,
+                    AgencyName = row.AgencyName,
+                    AgencyStatus = row.AgencyStatus,
+                    AgencyDateCreated = row.AgencyDateCreated,
+                    AgencyDateLastEdited = row.AgencyDateLastEdited
+                });
+            }
+            switch (name)
+            {
+                case "AgencyID":
+                    agencies = agencies.OrderBy(x => x.AgencyID).ToList();
+                    break;
+                case "AgencyName":
+                    agencies = agencies.OrderBy(x => x.AgencyName).ToList();
+                    break;
+            }
+            return View(agencies);
+        }
+
+        public ActionResult SortDescendingAgencyList(string name)
+        {
+            ViewBag.Message = "Sort Descending Agency List";
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.AgencyProcessor.LoadAgencies();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<AgencyModel> agencies = new List<AgencyModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                agencies.Add(new AgencyModel
+                {
+                    AgencyID = row.AgencyID,
+                    AgencyName = row.AgencyName,
+                    AgencyStatus = row.AgencyStatus,
+                    AgencyDateCreated = row.AgencyDateCreated,
+                    AgencyDateLastEdited = row.AgencyDateLastEdited
+                });
+            }
+            switch (name)
+            {
+                case "AgencyID":
+                    agencies = agencies.OrderByDescending(x => x.AgencyID).ToList();
+                    break;
+                case "AgencyName":
+                    agencies = agencies.OrderByDescending(x => x.AgencyName).ToList();
+                    break;
+            }
+            return View(agencies);
+        }
         public ActionResult CreateAgency()
         {
             ViewBag.Message = "Create new Agency";
@@ -595,6 +656,99 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View(departments);
         }
 
+        public ActionResult SortDepartmentList(string name)
+        {
+            ViewBag.Message = "Sort Department List";
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.DepartmentProcessor.LoadDepartments();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<DepartmentModel> departments = new List<DepartmentModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                departments.Add(new DepartmentModel
+                {
+                    OrgCode = row.OrgCode,
+                    departmentname = row.departmentname,
+                    UWCoordinator3 = row.UWCoordinator3,
+                    UWCoordinator2 = row.UWCoordinator2,
+                    UWCoordinator1 = row.UWCoordinator1,
+                    Division = row.Division,
+                    DepartmentStatus = row.DepartmentStatus,
+                    DepartmentDateCreated = row.DepartmentDateCreated,
+                    DepartmentLastEdited = row.DepartmentLastEdited
+                });
+            }
+            switch (name)
+            {
+                case "OrgCode":
+                    departments = departments.OrderBy(x => x.OrgCode).ToList();
+                    break;
+                case "Division":
+                    departments = departments.OrderBy(x => x.Division).ToList();
+                    break;
+                case "Department":
+                    departments = departments.OrderBy(x => x.departmentname).ToList();
+                    break;
+                case "UW3":
+                    departments = departments.OrderBy(x => x.UWCoordinator3).ToList();
+                    break;
+                case "UW2":
+                    departments = departments.OrderBy(x => x.UWCoordinator2).ToList();
+                    break;
+                case "UW1":
+                    departments = departments.OrderBy(x => x.UWCoordinator1).ToList();
+                    break;
+            }
+            return View(departments);
+        }
+
+        public ActionResult SortDescendingDepartmentList(string name)
+        {
+            ViewBag.Message = "Sort Descending Department List";
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.DepartmentProcessor.LoadDepartments();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<DepartmentModel> departments = new List<DepartmentModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                departments.Add(new DepartmentModel
+                {
+                    OrgCode = row.OrgCode,
+                    departmentname = row.departmentname,
+                    UWCoordinator3 = row.UWCoordinator3,
+                    UWCoordinator2 = row.UWCoordinator2,
+                    UWCoordinator1 = row.UWCoordinator1,
+                    Division = row.Division,
+                    DepartmentStatus = row.DepartmentStatus,
+                    DepartmentDateCreated = row.DepartmentDateCreated,
+                    DepartmentLastEdited = row.DepartmentLastEdited
+                });
+            }
+            switch (name)
+            {
+                case "OrgCode":
+                    departments = departments.OrderByDescending(x => x.OrgCode).ToList();
+                    break;
+                case "Division":
+                    departments = departments.OrderByDescending(x => x.Division).ToList();
+                    break;
+                case "Department":
+                    departments = departments.OrderByDescending(x => x.departmentname).ToList();
+                    break;
+                case "UW3":
+                    departments = departments.OrderByDescending(x => x.UWCoordinator3).ToList();
+                    break;
+                case "UW2":
+                    departments = departments.OrderByDescending(x => x.UWCoordinator2).ToList();
+                    break;
+                case "UW1":
+                    departments = departments.OrderByDescending(x => x.UWCoordinator1).ToList();
+                    break;
+            }
+            return View(departments);
+        }
         //form for creating a new department
         public ActionResult CreateDepartment()
         {

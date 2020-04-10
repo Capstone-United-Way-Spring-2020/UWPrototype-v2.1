@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.DepartmentModel>
+
+<h2>Departments</h2>
+
+<p>
+    @Html.ActionLink("Create New Department", "CreateDepartment")
+</p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Org Code", "SortDescendingDepartmentList", "Home", new { name = "OrgCode" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Division", "SortDescendingDepartmentList", "Home", new { name = "Division" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Department", "SortDescendingDepartmentList", "Home", new { name = "Department" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("UW Coordinator 3", "SortDescendingDepartmentList", "Home", new { name = "UW3" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("UW Coordinator 2", "SortDescendingDepartmentList", "Home", new { name = "UW2" }, null)
+        </th>
+        <th>
+            @Html.ActionLink("UW Coordinator 1", "SortDescendingDepartmentList", "Home", new { name = "UW1" }, null)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departmentname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UWCoordinator3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UWCoordinator2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UWCoordinator1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditDepartment", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+

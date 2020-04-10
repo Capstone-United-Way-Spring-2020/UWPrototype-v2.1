@@ -201,6 +201,10 @@
     <Content Include="Views\Home\SortDescendingContributionList.cshtml" />
     <Content Include="Views\Home\SortEmployeeList.cshtml" />
     <Content Include="Views\Home\SortDescendingEmployeeList.cshtml" />
+    <Content Include="Views\Home\SortDepartmentList.cshtml" />
+    <Content Include="Views\Home\SortDescendingDepartmentList.cshtml" />
+    <Content Include="Views\Home\SortAgencyList.cshtml" />
+    <Content Include="Views\Home\SortDescendingAgencyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
