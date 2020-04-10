@@ -12,11 +12,20 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Agency ID", "SortAgencyList", "Home", new { name = "AgencyID" }, null)
+            @Html.DisplayNameFor(model => model.AgencyID)
         </th>
         <th>
-            @Html.ActionLink("Agency Name", "SortAgencyList", "Home", new { name = "AgencyName" }, null)
+            @Html.DisplayNameFor(model => model.AgencyName)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.AgencyStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgencyDateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgencyDateLastEdited)
+        </th>*@
         <th></th>
     </tr>
 
@@ -30,6 +39,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.AgencyName)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.AgencyStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgencyDateCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgencyDateLastEdited)
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "EditAgency", new {  id=item.AgencyID, name=item.AgencyName  }, null) |
             @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@

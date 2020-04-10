@@ -15,23 +15,32 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Org Code", "SortDepartmentList", "Home", new { name = "OrgCode" }, null)
+            @Html.DisplayNameFor(model => model.OrgCode)
         </th>
         <th>
-            @Html.ActionLink("Division", "SortDepartmentList", "Home", new { name = "Division" }, null)
+            @Html.DisplayNameFor(model => model.Division)
         </th>
         <th>
-            @Html.ActionLink("Department", "SortDepartmentList", "Home", new { name = "Department" }, null)
+            @Html.DisplayNameFor(model => model.departmentname)
         </th>
         <th>
-            @Html.ActionLink("UW Coordinator 3", "SortDepartmentList", "Home", new { name = "UW3" }, null)
+            @Html.DisplayNameFor(model => model.UWCoordinator3)
         </th>
         <th>
-            @Html.ActionLink("UW Coordinator 2", "SortDepartmentList", "Home", new { name = "UW2" }, null)
+            @Html.DisplayNameFor(model => model.UWCoordinator2)
         </th>
         <th>
-            @Html.ActionLink("UW Coordinator 1", "SortDepartmentList", "Home", new { name = "UW1" }, null)
+            @Html.DisplayNameFor(model => model.UWCoordinator1)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.DepartmentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentDateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentLastEdited)
+        </th>*@
         <th></th>
     </tr>
 
@@ -55,6 +64,15 @@
     <td>
         @Html.DisplayFor(modelItem => item.UWCoordinator1)
     </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.DepartmentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentDateCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentLastEdited)
+        </td>*@
     <td>
         @Html.ActionLink("Edit", "EditDepartment", new { /* id=item.PrimaryKey */ }) |
         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
