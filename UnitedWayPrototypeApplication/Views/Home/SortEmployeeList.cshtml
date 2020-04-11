@@ -98,7 +98,7 @@
                 @Html.DisplayFor(modelItem => item.OrgCode)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "EditEmployee", new { cwid = item.CWID }, null) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

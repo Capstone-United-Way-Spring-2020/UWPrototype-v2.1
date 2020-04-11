@@ -74,5 +74,8 @@ namespace UnitedWayPrototypeApplication.Models
         [Display(Name = "Date Created")]
         public DateTime EmployeeDateCreated { get; set; } = DateTime.Now;
 
+        [Display(Name = "Department Last Edited")]
+        public DateTime EmployeeLastEdited { get; set; } = DateTime.Now;
+
     }
 }

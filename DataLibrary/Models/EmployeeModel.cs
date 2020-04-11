@@ -29,6 +29,8 @@ namespace DataLibrary.Models
         public string EmployeeDepartment { get; set; }
         //public int GivingYear { get; set; }
         public bool EmployeeStatus { get; set; } = true;
-        public DateTime EmployeeDateCreated { get; set; } = DateTime.Now;
+        public DateTime EmployeeDateCreated { get; set; }
+
+        public DateTime EmployeeLastEdited { get; set; }
     }
 }

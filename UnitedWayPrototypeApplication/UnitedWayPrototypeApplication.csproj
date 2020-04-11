@@ -334,6 +334,7 @@
     <Content Include="Views\Home\SortDescendingDepartmentList.cshtml" />
     <Content Include="Views\Home\SortAgencyList.cshtml" />
     <Content Include="Views\Home\SortDescendingAgencyList.cshtml" />
+    <Content Include="Views\Home\EditEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

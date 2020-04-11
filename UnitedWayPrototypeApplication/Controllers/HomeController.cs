@@ -60,12 +60,13 @@ namespace UnitedWayPrototypeApplication.Controllers
                     OrgCode = row.OrgCode,
                     EmployeeStatus = row.EmployeeStatus,
                     EmployeeDateCreated = row.EmployeeDateCreated,
+                    EmployeeLastEdited = row.EmployeeLastEdited,
                     Payroll = row.Payroll,
                     Salary = row.Salary,
                     POBox = row.POBox,
                     POBoxCity = row.POBoxCity,
                     POBoxState = row.POBoxState
-                });
+                }); ;
             }
 
             return View(employees);
@@ -95,6 +96,7 @@ namespace UnitedWayPrototypeApplication.Controllers
                     OrgCode = row.OrgCode,
                     EmployeeStatus = row.EmployeeStatus,
                     EmployeeDateCreated = row.EmployeeDateCreated,
+                    EmployeeLastEdited = row.EmployeeLastEdited,
                     Payroll = row.Payroll,
                     Salary = row.Salary,
                     POBox = row.POBox,
@@ -176,6 +178,7 @@ namespace UnitedWayPrototypeApplication.Controllers
                     OrgCode = row.OrgCode,
                     EmployeeStatus = row.EmployeeStatus,
                     EmployeeDateCreated = row.EmployeeDateCreated,
+                    EmployeeLastEdited = row.EmployeeLastEdited,
                     Payroll = row.Payroll,
                     Salary = row.Salary,
                     POBox = row.POBox,
@@ -248,13 +251,78 @@ namespace UnitedWayPrototypeApplication.Controllers
             if (ModelState.IsValid)
             {
                 DataLibrary.BusinessLogic.EmployeeProcessor.CreateEmployee(model.CWID, model.EmployeeFirstName, model.EmployeeLastName, model.EmployeeMI, model.StreetAddress, model.EmployeeCity, model.EmployeeState, model.EmployeeZip,
-                    model.Payroll, model.Salary, model.POBox, model.POBoxCity, model.POBoxState, model.OrgCode, model.EmployeeDepartment, /*model.GivingYear,*/ model.EmployeeStatus, model.EmployeeDateCreated);
+                    model.Payroll, model.Salary, model.POBox, model.POBoxCity, model.POBoxState, model.OrgCode, model.EmployeeDepartment, model.EmployeeStatus, model.EmployeeDateCreated, model.EmployeeLastEdited);
                 return RedirectToAction("Employee");
             }
 
             ViewBag.Message = "Create new Employee";
 
             ModelState.Clear();
+            return View();
+        }
+
+        public ActionResult EditEmployee(string cwid)
+        {
+            ViewBag.Message = "Edit Employee";
+
+            EmployeeModel emp = new UnitedWayPrototypeApplication.Models.EmployeeModel();
+
+            int Cwid = Int32.Parse(cwid);
+
+            var data = DataLibrary.BusinessLogic.EmployeeProcessor.LoadEmployees();
+
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                employees.Add(new EmployeeModel
+                {
+                    CWID = row.CWID,
+                    EmployeeFirstName = row.EmployeeFirstName,
+                    EmployeeLastName = row.EmployeeLastName,
+                    EmployeeMI = row.EmployeeMI,
+                    StreetAddress = row.StreetAddress,
+                    EmployeeCity = row.EmployeeCity,
+                    EmployeeState = row.EmployeeState,
+                    EmployeeZip = row.EmployeeZip,
+                    EmployeeDepartment = row.EmployeeDepartment,
+                    OrgCode = row.OrgCode,
+                    EmployeeStatus = row.EmployeeStatus,
+                    EmployeeDateCreated = row.EmployeeDateCreated,
+                    EmployeeLastEdited = row.EmployeeLastEdited,
+                    Payroll = row.Payroll,
+                    Salary = row.Salary,
+                    POBox = row.POBox,
+                    POBoxCity = row.POBoxCity,
+                    POBoxState = row.POBoxState
+                });
+            }
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            //create new row for each record
+            foreach (var row in employees)
+            {
+                if (row.CWID == Cwid)
+                {
+                    emp = row;
+                }
+            }
+
+            ViewData["Employee"] = emp;
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEmployee(EmployeeModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.EmployeeLastEdited = DateTime.Now;
+                DataLibrary.BusinessLogic.EmployeeProcessor.EditEmployee(model.CWID, model.EmployeeFirstName, model.EmployeeLastName, model.EmployeeMI, model.StreetAddress, model.EmployeeCity, model.EmployeeState, model.EmployeeZip,
+                    model.Payroll, model.Salary, model.POBox, model.POBoxCity, model.POBoxState, model.OrgCode, model.EmployeeDepartment, model.EmployeeStatus, model.EmployeeDateCreated, model.EmployeeLastEdited);
+                return RedirectToAction("Employee");
+            }
             return View();
         }
 
