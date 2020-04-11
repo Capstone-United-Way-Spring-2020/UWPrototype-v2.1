@@ -780,9 +780,45 @@ namespace UnitedWayPrototypeApplication.Controllers
         }
 
         // Creates forms for editing department
-        public ActionResult EditDepartment()
+        public ActionResult EditDepartment(string orgcode)
         {
             ViewBag.Message = "Edit Department";
+
+            DepartmentModel dept = new UnitedWayPrototypeApplication.Models.DepartmentModel();
+
+            int OrgCode = Int32.Parse(orgcode);
+
+            var data = DataLibrary.BusinessLogic.DepartmentProcessor.LoadDepartments();
+
+            List<DepartmentModel> departments = new List<DepartmentModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                departments.Add(new DepartmentModel
+                {
+                    OrgCode = row.OrgCode,
+                    departmentname = row.departmentname,
+                    UWCoordinator3 = row.UWCoordinator3,
+                    UWCoordinator2 = row.UWCoordinator2,
+                    UWCoordinator1 = row.UWCoordinator1,
+                    Division = row.Division,
+                    DepartmentStatus = row.DepartmentStatus,
+                    DepartmentDateCreated = row.DepartmentDateCreated,
+                    DepartmentLastEdited = row.DepartmentLastEdited
+                });
+            }
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            //create new row for each record
+            foreach (var row in departments)
+            {
+                if (row.OrgCode == OrgCode)
+                {
+                    dept = row;
+                }
+            }
+
+            ViewData["Department"] = dept;
+
             return View();
         }
 

@@ -4,13 +4,16 @@
     ViewBag.Title = "EditDepartment";
 }
 
-<h2>EditDepartment</h2>
+<h2>Edit Department</h2>
 
+@{
+    var dept = ViewData["Department"] as UnitedWayPrototypeApplication.Models.DepartmentModel;
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>DepartmentModel</h4>
     <hr />
@@ -18,31 +21,31 @@
     <div class="form-group">
         @Html.LabelFor(model => model.OrgCode, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.OrgCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.OrgCode, new { @readonly = true, @Value = dept.OrgCode })
             @Html.ValidationMessageFor(model => model.OrgCode, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.departmentname, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.departmentname, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.departmentname, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Division, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Division, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Division, new { htmlAttributes = new { @class = "form-control", @Value = dept.Division } })
             @Html.ValidationMessageFor(model => model.Division, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.departmentname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.departmentname, new { htmlAttributes = new { @class = "form-control", @Value = dept.departmentname } })
+            @Html.ValidationMessageFor(model => model.departmentname, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.UWCoordinator3, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.UWCoordinator3, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.UWCoordinator3, new { htmlAttributes = new { @class = "form-control", @Value = dept.UWCoordinator3 } })
             @Html.ValidationMessageFor(model => model.UWCoordinator3, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -50,7 +53,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.UWCoordinator2, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.UWCoordinator2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.UWCoordinator2, new { htmlAttributes = new { @class = "form-control", @Value = dept.UWCoordinator2 } })
             @Html.ValidationMessageFor(model => model.UWCoordinator2, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -58,19 +61,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.UWCoordinator1, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.UWCoordinator1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.UWCoordinator1, new { htmlAttributes = new { @class = "form-control", @Value = dept.UWCoordinator1 } })
             @Html.ValidationMessageFor(model => model.UWCoordinator1, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DepartmentStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.DepartmentStatus)
-                @Html.ValidationMessageFor(model => model.DepartmentStatus, "", new { @class = "text-danger" })
-            </div>
         </div>
     </div>
 

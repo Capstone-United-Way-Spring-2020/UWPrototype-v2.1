@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.UWCoordinator1)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditDepartment", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "EditDepartment", new { orgcode = item.OrgCode }, null) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
