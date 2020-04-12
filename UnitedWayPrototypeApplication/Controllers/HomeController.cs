@@ -35,7 +35,7 @@ namespace UnitedWayPrototypeApplication.Controllers
         }
 
         //employee overview, the list of all employees in the system
-        public ActionResult Employee()
+        public ActionResult Employee(string searchBy, string search)
         {
             ViewBag.Message = "Employee Overview";
 
@@ -68,8 +68,18 @@ namespace UnitedWayPrototypeApplication.Controllers
                     POBoxState = row.POBoxState
                 }); ;
             }
-
-            return View(employees);
+            if (searchBy == "EmployeeFirstName")
+            {
+                return View(employees.Where(x => x.EmployeeFirstName.StartsWith(search) || search == null).ToList());
+            }
+            else if (searchBy == "EmployeeLastName")
+            {
+                return View(employees.Where(x => x.EmployeeLastName.StartsWith(search) || search == null).ToList());
+            }
+            else
+            {
+                return View(employees);
+            }
         }
 
         public ActionResult SortEmployeeList(string name)
@@ -491,9 +501,10 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View(contributions);
         }
 
-        public ActionResult ContributionList()
+        public ActionResult ContributionList(string searchBy, string search)
         {
             ViewBag.Message = "Contribution List Overview";
+
             //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
             var data = DataLibrary.BusinessLogic.ContributionProcessor.LoadContributionList();
 
@@ -519,7 +530,21 @@ namespace UnitedWayPrototypeApplication.Controllers
                 });
             }
 
-            return View(contributionlist);
+            if (searchBy == "EmployeeFirstName")
+            {
+                return View(contributionlist.Where(x => x.EmployeeFirstName.StartsWith(search) || search == null).ToList());
+            }
+            else if (searchBy == "EmployeeLastName")
+            {
+                return View(contributionlist.Where(x => x.EmployeeLastName.StartsWith(search) || search == null).ToList());
+            }
+            else
+            {
+                return View(contributionlist);
+            }
+
+
+            // View(contributionlist);
         }
 
 

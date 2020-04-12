@@ -1,95 +1,115 @@
 ﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.ContributionListModel>
 
+    <div class="container">
 
-<h2>Contributions</h2>
+        <h2>Contributions</h2>
 
-<p>
-    @Html.ActionLink("Create New Contribution", "CreateContribution")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Contribution ID", "SortDescendingContributionList", "Home", new { name = "ContributionID" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("CWID", "SortDescendingContributionList", "Home", new { name = "CWID" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("First Name", "SortDescendingContributionList", "Home", new { name = "EmployeeFirstName" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Last Name", "SortDescendingContributionList", "Home", new { name = "EmployeeLastName" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Division", "SortDescendingContributionList", "Home", new { name = "Division" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Department", "SortDescendingContributionList", "Home", new { name = "Department" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Payment Type", "SortDescendingContributionList", "Home", new { name = "UWType" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Monthly Amount", "SortDescendingContributionList", "Home", new { name = "UWMonthly" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Months", "SortDescendingContributionList", "Home", new { name = "UWMonths" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Total Contribution", "SortDescendingContributionList", "Home", new { name = "uwcontributionamount" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Agency Name", "SortDescendingContributionList", "Home", new { name = "AgencyName" }, null)
-        </th>
-        <th>
-            @Html.ActionLink("Giving Year", "SortDescendingContributionList", "Home", new { name = "UWYear" }, null)
-        </th>
-        <th></th>
-    </tr>
+        <p>
+            @using (Html.BeginForm("ContributionList", "Home", FormMethod.Get))
+            {
+                <b>Search By:</b> @Html.RadioButton("searchBy", "EmployeeFirstName", true) <text>First Name</text>
+                @Html.RadioButton("searchBy", "EmployeeLastName") <text>Last Name</text><br />
+                @Html.TextBox("search") <input type="submit" value="Search" />
+            }
+        </p>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ContributionID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CWID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EmployeeFirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EmployeeLastName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Division)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DepartmentName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UWType)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UWMonthly)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UWMonths)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.uwcontributionamount)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AgencyName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UWYear)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "EditContribution", new { contributionid = item.ContributionID }, null) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-    </td>
-</tr>
-}
+        <p>
+            @Html.ActionLink("Create New Contribution", "CreateContribution")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Contribution ID", "SortDescendingContributionList", "Home", new { name = "ContributionID" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("CWID", "SortDescendingContributionList", "Home", new { name = "CWID" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("First Name", "SortDescendingContributionList", "Home", new { name = "EmployeeFirstName" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Last Name", "SortDescendingContributionList", "Home", new { name = "EmployeeLastName" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Division", "SortDescendingContributionList", "Home", new { name = "Division" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Department", "SortDescendingContributionList", "Home", new { name = "Department" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Payment Type", "SortDescendingContributionList", "Home", new { name = "UWType" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Monthly Amount", "SortDescendingContributionList", "Home", new { name = "UWMonthly" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Months", "SortDescendingContributionList", "Home", new { name = "UWMonths" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Total Contribution", "SortDescendingContributionList", "Home", new { name = "uwcontributionamount" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Agency Name", "SortDescendingContributionList", "Home", new { name = "AgencyName" }, null)
+                </th>
+                <th>
+                    @Html.ActionLink("Giving Year", "SortDescendingContributionList", "Home", new { name = "UWYear" }, null)
+                </th>
+                <th></th>
+            </tr>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="4">No rows match search criteria </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContributionID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CWID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeLastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Division)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartmentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UWType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UWMonthly)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UWMonths)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.uwcontributionamount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgencyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UWYear)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditContribution", new { contributionid = item.ContributionID }, null) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            }
 
-</table>
+            </table>
+    </div>

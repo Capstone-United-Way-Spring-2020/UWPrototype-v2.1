@@ -8,6 +8,15 @@
     <h2>Contributions</h2>
 
     <p>
+        @using (Html.BeginForm("ContributionList", "Home", FormMethod.Get))
+        {
+            <b>Search By:</b> @Html.RadioButton("searchBy", "EmployeeFirstName", true) <text>First Name</text>
+            @Html.RadioButton("searchBy", "EmployeeLastName") <text>Last Name</text><br />
+            @Html.TextBox("search") <input type="submit" value="Search" />
+        }
+    </p>
+
+    <p>
         @Html.ActionLink("Create New Contribution", "CreateContribution")
     </p>
     <table class="table">
@@ -51,7 +60,15 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4">No rows match search criteria </td>
+            </tr>
+        }
+        else
+        {
+        foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -96,6 +113,6 @@
                 </td>
             </tr>
         }
-
+        }
     </table>
 </div> 
