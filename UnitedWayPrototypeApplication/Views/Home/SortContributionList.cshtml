@@ -86,7 +86,7 @@
         @Html.DisplayFor(modelItem => item.UWYear)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Edit", "EditContribution", new { contributionid = item.ContributionID }, null) |
         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
     </td>
 </tr>

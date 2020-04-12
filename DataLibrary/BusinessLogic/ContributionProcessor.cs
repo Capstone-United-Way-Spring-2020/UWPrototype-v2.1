@@ -65,5 +65,32 @@ namespace DataLibrary.BusinessLogic
 
         }
 
+        public static int EditContribution(int ContributionID, string UWType, double UWMonthly, int UWMonths, int UWYear, int CWID, int AgencyID, 
+                                            string CheckNumber, DateTime UWDateCreated, DateTime UWDateLastEdited)
+        {
+            ContributionModel data = new ContributionModel
+            {
+                ContributionID = ContributionID,
+                UWType = UWType,
+                UWMonthly = UWMonthly,
+                UWMonths = UWMonths,
+                //     uwcontributionamount = ContributionAmount,
+                UWYear = UWYear,
+                CWID = CWID,
+                AgencyID = AgencyID,
+                CheckNumber = CheckNumber,
+                UWDateCreated = UWDateCreated,
+                UWDateLastEdited = UWDateLastEdited
+            };
+
+            string sql = @"UPDATE Contribution
+                            SET uwtype = @UWType, uwmonthly = @UWMonthly, uwmonths = @UWMonths, uwyear = @UWYear, 
+                            cwid = @CWID, agencyid = @AgencyID, checknumber = @CheckNumber, 
+                            uwdateedited = @UWDateLastEdited
+                            WHERE contributionid = @ContributionID;";
+
+            return SQLDataAccess.SaveData(sql, data);
+        }
+
     }
 }
