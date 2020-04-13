@@ -336,6 +336,7 @@
     <Content Include="Views\Home\SortDescendingAgencyList.cshtml" />
     <Content Include="Views\Home\EditEmployee.cshtml" />
     <Content Include="Views\Home\EditContribution.cshtml" />
+    <Content Include="Views\Home\DeleteContribution.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

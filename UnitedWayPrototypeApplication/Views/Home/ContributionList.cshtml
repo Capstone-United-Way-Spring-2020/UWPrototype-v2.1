@@ -68,51 +68,51 @@
         }
         else
         {
-        foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContributionID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CWID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeFirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeLastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Division)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DepartmentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UWType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UWMonthly)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UWMonths)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.uwcontributionamount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AgencyName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UWYear)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditContribution", new { contributionid = item.ContributionID }, null) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContributionID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CWID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeLastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Division)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartmentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UWType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UWMonthly)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UWMonths)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.uwcontributionamount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgencyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UWYear)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditContribution", new { contributionid = item.ContributionID }, null) |
+                        @Html.ActionLink("Delete", "DeleteContribution", new { contributionid = item.ContributionID }, null)
+                    </td>
+                </tr>
+            }
         }
     </table>
 </div> 
