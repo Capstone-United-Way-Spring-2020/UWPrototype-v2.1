@@ -92,5 +92,30 @@ namespace DataLibrary.BusinessLogic
             return SQLDataAccess.SaveData(sql, data);
         }
 
+        public static int DeleteContribution(int ContributionID, string UWType, double UWMonthly, int UWMonths, int UWYear, int CWID, int AgencyID, 
+                                            string CheckNumber, DateTime UWDateCreated, DateTime UWDateLastEdited)
+        {
+            ContributionModel data = new ContributionModel
+            {
+                ContributionID = ContributionID,
+                UWType = UWType,
+                UWMonthly = UWMonthly,
+                UWMonths = UWMonths,
+                //     uwcontributionamount = ContributionAmount,
+                UWYear = UWYear,
+                CWID = CWID,
+                AgencyID = AgencyID,
+                CheckNumber = CheckNumber,
+                UWDateCreated = UWDateCreated,
+                UWDateLastEdited = UWDateLastEdited
+            };
+
+            string sql = @"DELETE
+                           FROM Contribution
+                           WHERE contributionid = @ContributionID;";
+
+            return SQLDataAccess.SaveData(sql, data);
+        }
+
     }
 }

@@ -70,11 +70,11 @@ namespace UnitedWayPrototypeApplication.Controllers
             }
             if (searchBy == "EmployeeFirstName")
             {
-                return View(employees.Where(x => x.EmployeeFirstName.StartsWith(search) || search == null).ToList());
+                return View(employees.Where(x => x.EmployeeFirstName.ToLower().StartsWith(search.ToLower()) || search == null).ToList());
             }
             else if (searchBy == "EmployeeLastName")
             {
-                return View(employees.Where(x => x.EmployeeLastName.StartsWith(search) || search == null).ToList());
+                return View(employees.Where(x => x.EmployeeLastName.ToLower().StartsWith(search.ToLower()) || search == null).ToList());
             }
             else
             {
@@ -532,11 +532,11 @@ namespace UnitedWayPrototypeApplication.Controllers
 
             if (searchBy == "EmployeeFirstName")
             {
-                return View(contributionlist.Where(x => x.EmployeeFirstName.StartsWith(search) || search == null).ToList());
+                return View(contributionlist.Where(x => x.EmployeeFirstName.ToLower().StartsWith(search.ToLower()) || search == null).ToList());
             }
             else if (searchBy == "EmployeeLastName")
             {
-                return View(contributionlist.Where(x => x.EmployeeLastName.StartsWith(search) || search == null).ToList());
+                return View(contributionlist.Where(x => x.EmployeeLastName.ToLower().StartsWith(search.ToLower()) || search == null).ToList());
             }
             else
             {
@@ -781,7 +781,50 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View();
         }
 
+        public ActionResult DeleteContribution(string contributionid)
+        {
+            ViewBag.Message = "Delete Contribution";
 
+            ContributionModel contr = new UnitedWayPrototypeApplication.Models.ContributionModel();
+
+            int cid = Int32.Parse(contributionid);
+
+            var data = DataLibrary.BusinessLogic.ContributionProcessor.LoadContributions();
+
+            List<ContributionModel> contributions = new List<ContributionModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                contributions.Add(new ContributionModel
+                {
+                    ContributionID = row.ContributionID,
+                    UWType = row.UWType,
+                    UWMonthly = row.UWMonthly,
+                    UWMonths = row.UWMonths,
+                    uwcontributionamount = row.uwcontributionamount,
+                    UWYear = row.UWYear,
+                    CWID = row.CWID,
+                    AgencyID = row.AgencyID,
+                    CheckNumber = row.CheckNumber,
+                    UWDateCreated = row.UWDateCreated,
+                    UWDateLastEdited = row.UWDateLastEdited
+                });
+            }
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            //create new row for each record
+            foreach (var row in contributions)
+            {
+                if (row.ContributionID == cid)
+                {
+                    contr = row;
+                }
+            }
+
+            ViewData["Contribution"] = contr;
+
+            return View();
+        }
+ 
         //department overview, shows all departments in a list
         public ActionResult Department()
         {
