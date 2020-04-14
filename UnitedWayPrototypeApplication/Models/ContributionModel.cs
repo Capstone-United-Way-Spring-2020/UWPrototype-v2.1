@@ -57,7 +57,10 @@ namespace UnitedWayPrototypeApplication.Models
 
         [DataType(DataType.Currency)]
         [Display(Name = "Contribution Amount")]
-        public double uwcontributionamount { get; set; }
+        public double uwcontributionamount
+        {
+            get { return UWMonthly * UWMonths; }
+        }
 
         [Display(Name = "Giving Year")]
         public int UWYear { get; set; }

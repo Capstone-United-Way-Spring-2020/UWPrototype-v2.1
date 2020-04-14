@@ -11,7 +11,7 @@ namespace DataLibrary.BusinessLogic
     //process the information/data, statements for sending data to and from sql database
     public class ContributionProcessor
     {
-        public static int CreateContribution(string UWType, double UWMonthly, int UWMonths, int UWYear, int CWID, int AgencyID, string CheckNumber, DateTime UWDateCreated, DateTime UWDateLastEdited)
+        public static int CreateContribution(string UWType, double UWMonthly, int UWMonths, double ContributionAmount, int UWYear, int CWID, int AgencyID, string CheckNumber, DateTime UWDateCreated, DateTime UWDateLastEdited)
         {
             ContributionModel data = new ContributionModel
             {
@@ -19,7 +19,7 @@ namespace DataLibrary.BusinessLogic
                 UWType = UWType,
                 UWMonthly = UWMonthly,
                 UWMonths = UWMonths,
-           //     uwcontributionamount = ContributionAmount,
+                uwcontributionamount = ContributionAmount,
                 UWYear = UWYear,
                 CWID = CWID,
                 AgencyID = AgencyID,
@@ -29,8 +29,8 @@ namespace DataLibrary.BusinessLogic
             };
 
             //sql for sending data to the database from the values above
-            string sql = @"INSERT INTO Contribution (uwtype, uwmonths, uwyear, cwid, agencyid, checknumber, uwdatecreated, uwdateedited, uwmonthly)
-                        VALUES (@UWType, @UWMonths, @UWYear, @CWID, @AgencyID, @CheckNumber, @UWDateCreated, @UWDateLastEdited, @UWMonthly);";
+            string sql = @"INSERT INTO Contribution (uwtype, uwmonths, uwyear, cwid, agencyid, checknumber, uwdatecreated, uwdateedited, uwmonthly, uwcontributionamount)
+                        VALUES (@UWType, @UWMonths, @UWYear, @CWID, @AgencyID, @CheckNumber, @UWDateCreated, @UWDateLastEdited, @UWMonthly, @uwcontributionamount);";
 
             return SQLDataAccess.SaveData(sql, data);
         }
@@ -65,7 +65,7 @@ namespace DataLibrary.BusinessLogic
 
         }
 
-        public static int EditContribution(int ContributionID, string UWType, double UWMonthly, int UWMonths, int UWYear, int CWID, int AgencyID, 
+        public static int EditContribution(int ContributionID, string UWType, double UWMonthly, int UWMonths, double ContributionAmount, int UWYear, int CWID, int AgencyID, 
                                             string CheckNumber, DateTime UWDateCreated, DateTime UWDateLastEdited)
         {
             ContributionModel data = new ContributionModel
@@ -74,7 +74,7 @@ namespace DataLibrary.BusinessLogic
                 UWType = UWType,
                 UWMonthly = UWMonthly,
                 UWMonths = UWMonths,
-                //     uwcontributionamount = ContributionAmount,
+                uwcontributionamount = ContributionAmount,
                 UWYear = UWYear,
                 CWID = CWID,
                 AgencyID = AgencyID,

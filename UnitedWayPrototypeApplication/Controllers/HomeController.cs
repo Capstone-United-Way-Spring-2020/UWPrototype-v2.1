@@ -488,7 +488,7 @@ namespace UnitedWayPrototypeApplication.Controllers
                     UWType = row.UWType,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
-                    uwcontributionamount = row.uwcontributionamount,
+                  //  uwcontributionamount = row.uwcontributionamount,
                     UWYear = row.UWYear,
                     CWID = row.CWID,
                     AgencyID = row.AgencyID,
@@ -569,7 +569,7 @@ namespace UnitedWayPrototypeApplication.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    DataLibrary.BusinessLogic.ContributionProcessor.CreateContribution(model.UWType, model.UWMonthly, model.UWMonths, model.UWYear,
+                    DataLibrary.BusinessLogic.ContributionProcessor.CreateContribution(model.UWType, model.UWMonthly, model.UWMonths, model.uwcontributionamount, model.UWYear,
                         model.CWID, model.AgencyID, model.CheckNumber, model.UWDateCreated, model.UWDateLastEdited);
                     return RedirectToAction("ContributionList");
                 }
@@ -743,7 +743,7 @@ namespace UnitedWayPrototypeApplication.Controllers
                     UWType = row.UWType,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
-                    uwcontributionamount = row.uwcontributionamount,
+                //    uwcontributionamount = row.uwcontributionamount,
                     UWYear = row.UWYear,
                     CWID = row.CWID,
                     AgencyID = row.AgencyID,
@@ -774,56 +774,56 @@ namespace UnitedWayPrototypeApplication.Controllers
             if (ModelState.IsValid)
             {
                 model.UWDateLastEdited = DateTime.Now;
-                DataLibrary.BusinessLogic.ContributionProcessor.EditContribution(model.ContributionID, model.UWType, model.UWMonthly, model.UWMonths, model.UWYear,
+                DataLibrary.BusinessLogic.ContributionProcessor.EditContribution(model.ContributionID, model.UWType, model.UWMonthly, model.UWMonths, model.uwcontributionamount, model.UWYear,
                         model.CWID, model.AgencyID, model.CheckNumber, model.UWDateCreated, model.UWDateLastEdited);
                 return RedirectToAction("ContributionList");
             }
             return View();
         }
 
-        public ActionResult DeleteContribution(string contributionid)
-        {
-            ViewBag.Message = "Delete Contribution";
+        //public ActionResult DeleteContribution(string contributionid)
+        //{
+        //    ViewBag.Message = "Delete Contribution";
 
-            ContributionModel contr = new UnitedWayPrototypeApplication.Models.ContributionModel();
+        //    ContributionModel contr = new UnitedWayPrototypeApplication.Models.ContributionModel();
 
-            int cid = Int32.Parse(contributionid);
+        //    int cid = Int32.Parse(contributionid);
 
-            var data = DataLibrary.BusinessLogic.ContributionProcessor.LoadContributions();
+        //    var data = DataLibrary.BusinessLogic.ContributionProcessor.LoadContributions();
 
-            List<ContributionModel> contributions = new List<ContributionModel>();
-            //create new row for each record
-            foreach (var row in data)
-            {
-                contributions.Add(new ContributionModel
-                {
-                    ContributionID = row.ContributionID,
-                    UWType = row.UWType,
-                    UWMonthly = row.UWMonthly,
-                    UWMonths = row.UWMonths,
-                    uwcontributionamount = row.uwcontributionamount,
-                    UWYear = row.UWYear,
-                    CWID = row.CWID,
-                    AgencyID = row.AgencyID,
-                    CheckNumber = row.CheckNumber,
-                    UWDateCreated = row.UWDateCreated,
-                    UWDateLastEdited = row.UWDateLastEdited
-                });
-            }
-            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
-            //create new row for each record
-            foreach (var row in contributions)
-            {
-                if (row.ContributionID == cid)
-                {
-                    contr = row;
-                }
-            }
+        //    List<ContributionModel> contributions = new List<ContributionModel>();
+        //    //create new row for each record
+        //    foreach (var row in data)
+        //    {
+        //        contributions.Add(new ContributionModel
+        //        {
+        //            ContributionID = row.ContributionID,
+        //            UWType = row.UWType,
+        //            UWMonthly = row.UWMonthly,
+        //            UWMonths = row.UWMonths,
+        //            uwcontributionamount = row.uwcontributionamount,
+        //            UWYear = row.UWYear,
+        //            CWID = row.CWID,
+        //            AgencyID = row.AgencyID,
+        //            CheckNumber = row.CheckNumber,
+        //            UWDateCreated = row.UWDateCreated,
+        //            UWDateLastEdited = row.UWDateLastEdited
+        //        });
+        //    }
+        //    //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+        //    //create new row for each record
+        //    foreach (var row in contributions)
+        //    {
+        //        if (row.ContributionID == cid)
+        //        {
+        //            contr = row;
+        //        }
+        //    }
 
-            ViewData["Contribution"] = contr;
+        //    ViewData["Contribution"] = contr;
 
-            return View();
-        }
+        //    return View();
+        //}
  
         //department overview, shows all departments in a list
         public ActionResult Department()
