@@ -7,8 +7,8 @@
         <p>
             @using (Html.BeginForm("ContributionList", "Home", FormMethod.Get))
             {
-                <b>Search By:</b> @Html.RadioButton("searchBy", "EmployeeFirstName", true) <text>First Name</text>
-                @Html.RadioButton("searchBy", "EmployeeLastName") <text>Last Name</text><br />
+                <b>Search By:</b> @Html.RadioButton("searchBy", "EmployeeFirstName") <text>First Name</text>
+                @Html.RadioButton("searchBy", "EmployeeLastName", true) <text>Last Name</text><br />
                 @Html.TextBox("search") <input type="submit" value="Search" />
             }
         </p>
