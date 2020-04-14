@@ -1065,8 +1065,8 @@ namespace UnitedWayPrototypeApplication.Controllers
 
                 //mappings
                 sqlBulk.ColumnMappings.Add("CWID", "cwid");
-                sqlBulk.ColumnMappings.Add("LastName", "employeelastname");
                 sqlBulk.ColumnMappings.Add("FirstName", "employeefirstname");
+                sqlBulk.ColumnMappings.Add("LastName", "employeelastname");
                 sqlBulk.ColumnMappings.Add("MI", "employeemi");
                 sqlBulk.ColumnMappings.Add("StreetAddress1", "streetaddress");
                 sqlBulk.ColumnMappings.Add("City", "employeecity");

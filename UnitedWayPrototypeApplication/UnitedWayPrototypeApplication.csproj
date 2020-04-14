@@ -150,6 +150,7 @@
     <Content Include="Assets\css\custom.css" />
     <Content Include="Assets\css\font-awesome.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\Form.css" />
     <Content Include="Assets\css\style.min.css" />
     <Content Include="Assets\css\ua-logos\aa-depts.min.css" />
     <Content Include="Assets\css\ua-logos\as-depts.min.css" />
