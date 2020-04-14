@@ -54,6 +54,7 @@
     <Compile Include="Models\ContributionListModel.cs" />
     <Compile Include="Models\ContributionModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\DepartmentReportModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

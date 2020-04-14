@@ -1,0 +1,51 @@
+﻿@model IEnumerable<UnitedWayPrototypeApplication.Models.DepartmentReportModel>
+
+    <h2>Division Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Division)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrAvg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonorCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentParticipation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrAvg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonorCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentParticipation)
+        </td>
+    </tr>
+}
+
+</table>

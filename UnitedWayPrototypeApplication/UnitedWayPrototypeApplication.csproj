@@ -137,7 +137,7 @@
     <Compile Include="Models\ContributionListModel.cs" />
     <Compile Include="Models\ContributionModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
-    <Compile Include="Models\DepartmentReport.cs" />
+    <Compile Include="Models\DepartmentReportModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\ImportDepartment.cs" />
     <Compile Include="Models\ImportExcel.cs" />
@@ -339,6 +339,7 @@
     <Content Include="Views\Home\EditEmployee.cshtml" />
     <Content Include="Views\Home\EditContribution.cshtml" />
     <Content Include="Views\Home\DeleteContribution.cshtml" />
+    <Content Include="Views\Home\DepartmentReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

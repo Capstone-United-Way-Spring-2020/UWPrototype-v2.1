@@ -488,7 +488,7 @@ namespace UnitedWayPrototypeApplication.Controllers
                     UWType = row.UWType,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
-                  //  uwcontributionamount = row.uwcontributionamount,
+                    //  uwcontributionamount = row.uwcontributionamount,
                     UWYear = row.UWYear,
                     CWID = row.CWID,
                     AgencyID = row.AgencyID,
@@ -743,7 +743,7 @@ namespace UnitedWayPrototypeApplication.Controllers
                     UWType = row.UWType,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
-                //    uwcontributionamount = row.uwcontributionamount,
+                    //    uwcontributionamount = row.uwcontributionamount,
                     UWYear = row.UWYear,
                     CWID = row.CWID,
                     AgencyID = row.AgencyID,
@@ -824,7 +824,7 @@ namespace UnitedWayPrototypeApplication.Controllers
 
         //    return View();
         //}
- 
+
         //department overview, shows all departments in a list
         public ActionResult Department()
         {
@@ -1029,6 +1029,32 @@ namespace UnitedWayPrototypeApplication.Controllers
             }
             return View();
         }
+
+        public ActionResult DepartmentReport()
+        {
+            ViewBag.Message = "Department Report";
+
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.DepartmentProcessor.LoadDepartmentReport();
+
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<DepartmentReportModel> DeptReportList = new List<DepartmentReportModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                DeptReportList.Add(new DepartmentReportModel
+                {
+                    Division = row.Division,
+                    CurrTotal = row.CurrTotal,
+                    CurrAvg = row.CurrAvg,
+                    DonorCount = row.DonorCount,
+                    EmployeeCount = row.EmployeeCount,
+                    PercentParticipation = row.PercentParticipation,
+                });
+            }
+            
+            return View(DeptReportList);
+        } 
 
 
         //controller for importing excel files
