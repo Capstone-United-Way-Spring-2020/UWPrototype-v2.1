@@ -550,7 +550,6 @@ namespace UnitedWayPrototypeApplication.Controllers
         public ActionResult EnterCwid()
         {
             ViewBag.Message = "Enter CWID";
-            int y = 2;
             return View();
         }
 
