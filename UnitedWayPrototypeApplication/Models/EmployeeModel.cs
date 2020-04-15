@@ -61,8 +61,6 @@ namespace UnitedWayPrototypeApplication.Models
         public string POBoxState { get; set; }
 
         [Display(Name = "Org Code")]
-        [Range(100000, 999999, ErrorMessage = "You need to enter a valid Org Code")]
-        [Required(ErrorMessage = "You must enter an Org Code.")]
         public int OrgCode { get; set; }
 
         [Display(Name = "Department")]
