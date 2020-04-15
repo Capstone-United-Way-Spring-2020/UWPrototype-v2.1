@@ -59,14 +59,12 @@ namespace UnitedWayPrototypeApplication.Models
         public string POBoxState { get; set; }
 
         [Display(Name = "Org Code")]
+        [Range(100000, 999999, ErrorMessage = "You need to enter a valid Org Code")]
+        [Required(ErrorMessage = "You must enter an Org Code.")]
         public int OrgCode { get; set; }
 
         [Display(Name = "Department")]
         public string EmployeeDepartment { get; set; }
-
-        //[Display(Name = "Giving Year")]
-        //[Required(ErrorMessage = "You must enter the giving year")]
-        //public int GivingYear { get; set; } 
 
         [Display(Name = "Employee Status")]
         public bool EmployeeStatus { get; set; } = true;

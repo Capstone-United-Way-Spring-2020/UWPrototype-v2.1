@@ -342,6 +342,7 @@
     <Content Include="Views\Home\EnterCwid.cshtml" />
     <Content Include="Views\Home\DisplayName.cshtml" />
     <Content Include="Views\Shared\NonExistingAgencyidCWID.cshtml" />
+    <Content Include="Views\Shared\NonExistingOrgCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

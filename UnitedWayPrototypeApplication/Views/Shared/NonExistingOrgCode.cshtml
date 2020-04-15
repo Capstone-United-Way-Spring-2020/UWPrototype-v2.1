@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Non-Existing Org Code Error</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Error.</h1>
+        <h2>
+            The entered Org Code does not match an Org Code that exists in the system. Please verify it was entered correctly and exists in the 'Department' tab.
+
+            Please return and resubmit the request.
+        </h2>
+    </hgroup>
+</body>
+
+@model System.Web.Mvc.HandleErrorInfo
+<h1 class="text-danger">@Model.Exception.Message</h1>
+<h3 class="text-danger">Non-Existing Org Code (Message).</h3>
+
+@Html.ActionLink("Back", "Employee", "Home");
+

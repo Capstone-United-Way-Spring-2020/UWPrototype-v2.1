@@ -257,7 +257,11 @@ namespace UnitedWayPrototypeApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EmployeeCreate(EmployeeModel model)
         {
-                //if the model (data) is valid, create the employee in the database using these parameters
+
+            try
+            {
+                // Try-Catch in case of a non-existing org code (not matching any on the db) is entered. Should throw the NonExistingOrgCode page and prompt for resubmission. - MD
+
                 if (ModelState.IsValid)
                 {
                     DataLibrary.BusinessLogic.EmployeeProcessor.CreateEmployee(model.CWID, model.EmployeeFirstName, model.EmployeeLastName, model.EmployeeMI, model.StreetAddress, model.EmployeeCity, model.EmployeeState, model.EmployeeZip,
@@ -268,7 +272,12 @@ namespace UnitedWayPrototypeApplication.Controllers
                 ViewBag.Message = "Create new Employee";
 
                 ModelState.Clear();
-                return View();          
+                return View();
+
+            } catch (Exception OrgCode)
+            {
+                return View("NonExistingOrgCode", new HandleErrorInfo(OrgCode, "EmployeeModel", "EmployeeCreate"));
+            }
         }
 
         public ActionResult EditEmployee(string cwid)
@@ -616,7 +625,7 @@ namespace UnitedWayPrototypeApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateContribution(ContributionModel model)
         {
-            // Try-Catch in case of a non-existing cwid/agencyid (not matching any on the db) is entered. Should throw the Non-ExistingAgencyID_CWID page and prompt for resubmission. 
+            // Try-Catch in case of a non-existing cwid/agencyid (not matching any on the db) is entered. Should throw the NonExistingAgencyidCWID page and prompt for resubmission. 
             // Current build does not specify if it is the cwid or agencyID that does not match besides the automatically generated error message. - MD
 
             try
