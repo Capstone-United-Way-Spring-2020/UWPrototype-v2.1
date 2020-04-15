@@ -547,11 +547,67 @@ namespace UnitedWayPrototypeApplication.Controllers
             // View(contributionlist);
         }
 
+        public ActionResult EnterCwid()
+        {
+            ViewBag.Message = "Enter CWID";
+            int y = 2;
+            return View();
+        }
 
-        public ActionResult CreateContribution()
+        public ActionResult DisplayName(string cwid)
+        {
+            int cid = Int32.Parse(cwid);
+
+            var data = DataLibrary.BusinessLogic.EmployeeProcessor.LoadEmployees();
+
+            EmployeeModel emp = new EmployeeModel();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                employees.Add(new EmployeeModel
+                {
+                    CWID = row.CWID,
+                    EmployeeFirstName = row.EmployeeFirstName,
+                    EmployeeLastName = row.EmployeeLastName,
+                    EmployeeMI = row.EmployeeMI,
+                    StreetAddress = row.StreetAddress,
+                    EmployeeCity = row.EmployeeCity,
+                    EmployeeState = row.EmployeeState,
+                    EmployeeZip = row.EmployeeZip,
+                    EmployeeDepartment = row.EmployeeDepartment,
+                    OrgCode = row.OrgCode,
+                    EmployeeStatus = row.EmployeeStatus,
+                    EmployeeDateCreated = row.EmployeeDateCreated,
+                    EmployeeLastEdited = row.EmployeeLastEdited,
+                    Payroll = row.Payroll,
+                    Salary = row.Salary,
+                    POBox = row.POBox,
+                    POBoxCity = row.POBoxCity,
+                    POBoxState = row.POBoxState
+                });
+            }
+
+            foreach (var row in employees)
+            {
+                if (row.CWID == cid)
+                {
+                    emp = row;
+                    ViewData["Employee"] = emp;
+                    return View();
+                }
+            }
+            
+            return RedirectToAction("ContributionList");
+
+        }
+        public ActionResult CreateContribution(string cwid)
         {
             ViewBag.Message = "Enter new Contribution";
+            int cid = Int32.Parse(cwid);
 
+            ViewData["CWID"] = cid;
 
             return View();
         }

@@ -340,6 +340,8 @@
     <Content Include="Views\Home\EditContribution.cshtml" />
     <Content Include="Views\Home\DeleteContribution.cshtml" />
     <Content Include="Views\Home\DepartmentReport.cshtml" />
+    <Content Include="Views\Home\EnterCwid.cshtml" />
+    <Content Include="Views\Home\DisplayName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

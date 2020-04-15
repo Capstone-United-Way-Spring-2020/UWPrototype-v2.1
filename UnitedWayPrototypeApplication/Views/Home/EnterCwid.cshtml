@@ -1,0 +1,27 @@
+﻿@model UnitedWayPrototypeApplication.Models.ContributionModel
+
+
+
+@{
+    ViewBag.Title = "Enter CWID";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>
+            Enter CWID:
+        </label>
+        <input type="text" id="CWID" name="CWID" required />
+    </div>
+    @Html.ActionLink("Continue", "DisplayName", "Home", new { cwid = "10026556" }, null)
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
