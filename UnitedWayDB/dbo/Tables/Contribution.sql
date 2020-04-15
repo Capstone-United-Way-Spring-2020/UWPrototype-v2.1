@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Contribution] (
     [contributionid]       INT IDENTITY(1,1)         NOT NULL,
-    [uwtype]               CHAR (1)     NULL,
-    [uwmonthly]            INT          NULL,
+    [uwtype]               VARCHAR (10)     NULL,
+    [uwmonthly]            DECIMAL(16,2)          NULL,
     [uwmonths]             INT          NULL,
-    [uwcontributionamount] INT          NULL,
+    [uwcontributionamount] DECIMAL(16,2)         NULL,
     [uwdate]               DATE         NULL,
     [uwyear]               INT          NULL,
     [cwid]                 INT          NULL,
