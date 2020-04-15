@@ -33,11 +33,13 @@ namespace UnitedWayPrototypeApplication.Models
         public string EmployeeCity { get; set; }
 
         [Display(Name = "State")]
+        [StringLength(2)]
         [Required(ErrorMessage = "You must enter a state")]
         public string EmployeeState { get; set; }
         
         [Display(Name = "Zip Code")]
         [DataType(DataType.PostalCode)]
+        [StringLength(9)]
         [Required(ErrorMessage = "You must enter a zip code")]
         public string EmployeeZip { get; set; }
 
@@ -46,7 +48,6 @@ namespace UnitedWayPrototypeApplication.Models
         public string Payroll { get; set; }
 
         [Display(Name = "Salary")]
-        [Required(ErrorMessage = "You must enter a valid salary")]
         public int Salary { get; set; }
 
         [Display(Name = "PO Box")]
@@ -56,6 +57,7 @@ namespace UnitedWayPrototypeApplication.Models
         public string POBoxCity { get; set; }
 
         [Display(Name = "PO Box State")]
+        [StringLength(2)]
         public string POBoxState { get; set; }
 
         [Display(Name = "Org Code")]
