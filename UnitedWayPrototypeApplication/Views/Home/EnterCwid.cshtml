@@ -8,7 +8,7 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("DisplayName","Home", FormMethod.Post, new { @cwid =  "form-group" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
@@ -17,7 +17,11 @@
         </label>
         <input type="text" id="CWID" name="CWID" required />
     </div>
-    @Html.ActionLink("Continue", "DisplayName", "Home", new { cwid = "10026556" }, null)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Continue" onclick ="return validateform()"   class="btn btn-default" />
+        </div>
+    </div>
 }
 
 @section Scripts {
