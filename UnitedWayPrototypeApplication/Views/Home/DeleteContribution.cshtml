@@ -10,72 +10,67 @@
 {
     @Html.AntiForgeryToken()
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CWID)
-        </dt>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ContributionID)
 
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.CWID })
-        </dd>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CWID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CWID, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.CWID } })
+                @Html.ValidationMessageFor(model => model.CWID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AgencyID)
-        </dt>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgencyID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AgencyID, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.AgencyID } })
+                @Html.ValidationMessageFor(model => model.AgencyID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.AgencyID })
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UWType)
-        </dt>
-
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.UWType })
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UWMonthly)
-        </dt>
-
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.UWMonthly })
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UWMonths)
-        </dt>
-
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.UWMonths })
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.uwcontributionamount)
-        </dt>
-
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.uwcontributionamount })
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UWYear)
-        </dt>
-
-        <dd>
-            @Html.TextBoxFor(model => model.CWID, new { @readonly = true, @Value = contr.UWYear })
-        </dd>
-
-    </dl>
-
-    @Html.ActionLink("Continue", "DeleteContr", new { cwid = contr.CWID }, null) 
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UWType, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWType } })
+                @Html.ValidationMessageFor(model => model.UWType, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
 
-<div  class="form-actions no-color">
-<input type = "submit" value="Delete" class="btn btn-default" />
-</div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWMonthly, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UWMonthly, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWMonthly } })
+                @Html.ValidationMessageFor(model => model.UWMonthly, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWMonths, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UWMonths, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWMonths } })
+                @Html.ValidationMessageFor(model => model.UWMonths, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWYear, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UWYear, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWYear } })
+                @Html.ValidationMessageFor(model => model.UWYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 <div>
     @Html.ActionLink("Back to List", "ContributionList")
