@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Non-Existing AgencyID or CWID Error</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Error.</h1>
+        <h2>
+            The entered AgencyID or CWID does not match an agency/employee record previously entered. Please verify each was entered correctly and exists in the program.
+
+            Please return and resubmit the request.
+        </h2>
+    </hgroup>
+</body>
+
+@model System.Web.Mvc.HandleErrorInfo
+<h1 class="text-danger">@Model.Exception.Message</h1>
+<h3 class="text-danger">Non-Existing AgencyID or CWID Error (Message).</h3>
+
+@Html.ActionLink("Back", "Contribution", "Home");
+
+

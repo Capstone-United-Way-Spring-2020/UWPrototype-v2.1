@@ -257,18 +257,18 @@ namespace UnitedWayPrototypeApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EmployeeCreate(EmployeeModel model)
         {
-            //if the model (data) is valid, create the employee in the database using these parameters
-            if (ModelState.IsValid)
-            {
-                DataLibrary.BusinessLogic.EmployeeProcessor.CreateEmployee(model.CWID, model.EmployeeFirstName, model.EmployeeLastName, model.EmployeeMI, model.StreetAddress, model.EmployeeCity, model.EmployeeState, model.EmployeeZip,
-                    model.Payroll, model.Salary, model.POBox, model.POBoxCity, model.POBoxState, model.OrgCode, model.EmployeeDepartment, model.EmployeeStatus, model.EmployeeDateCreated, model.EmployeeLastEdited);
-                return RedirectToAction("Employee");
-            }
+                //if the model (data) is valid, create the employee in the database using these parameters
+                if (ModelState.IsValid)
+                {
+                    DataLibrary.BusinessLogic.EmployeeProcessor.CreateEmployee(model.CWID, model.EmployeeFirstName, model.EmployeeLastName, model.EmployeeMI, model.StreetAddress, model.EmployeeCity, model.EmployeeState, model.EmployeeZip,
+                        model.Payroll, model.Salary, model.POBox, model.POBoxCity, model.POBoxState, model.OrgCode, model.EmployeeDepartment, model.EmployeeStatus, model.EmployeeDateCreated, model.EmployeeLastEdited);
+                    return RedirectToAction("Employee");
+                }
 
-            ViewBag.Message = "Create new Employee";
+                ViewBag.Message = "Create new Employee";
 
-            ModelState.Clear();
-            return View();
+                ModelState.Clear();
+                return View();          
         }
 
         public ActionResult EditEmployee(string cwid)
@@ -637,10 +637,9 @@ namespace UnitedWayPrototypeApplication.Controllers
             }
             catch (Exception AgencyID_CWID)
             {
-                return View("Non-ExistingAgencyID_CWID", new HandleErrorInfo(AgencyID_CWID, "ContributionModel", "CreateContribution"));
-
-            } 
-}
+                return View("NonExistingAgencyidCWID", new HandleErrorInfo(AgencyID_CWID, "ContributionModel", "CreateContribution"));
+            }
+        }
         public ActionResult SortContributionList(string name)
         {
             ViewBag.Message = "Sort Contribution List";
