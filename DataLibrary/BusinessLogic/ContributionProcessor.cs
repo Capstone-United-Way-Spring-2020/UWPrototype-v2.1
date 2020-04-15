@@ -92,7 +92,7 @@ namespace DataLibrary.BusinessLogic
             return SQLDataAccess.SaveData(sql, data);
         }
 
-        public static int DeleteContribution(int ContributionID, string UWType, double UWMonthly, int UWMonths, int UWYear, int CWID, int AgencyID, 
+        public static int DeleteContribution(int ContributionID, string UWType, double UWMonthly, int UWMonths, double ContributionAmount, int UWYear, int CWID, int AgencyID,
                                             string CheckNumber, DateTime UWDateCreated, DateTime UWDateLastEdited)
         {
             ContributionModel data = new ContributionModel
@@ -101,7 +101,7 @@ namespace DataLibrary.BusinessLogic
                 UWType = UWType,
                 UWMonthly = UWMonthly,
                 UWMonths = UWMonths,
-                //     uwcontributionamount = ContributionAmount,
+                uwcontributionamount = ContributionAmount,
                 UWYear = UWYear,
                 CWID = CWID,
                 AgencyID = AgencyID,
@@ -110,8 +110,7 @@ namespace DataLibrary.BusinessLogic
                 UWDateLastEdited = UWDateLastEdited
             };
 
-            string sql = @"DELETE
-                           FROM Contribution
+            string sql = @"DELETE FROM Contribution
                            WHERE contributionid = @ContributionID;";
 
             return SQLDataAccess.SaveData(sql, data);
