@@ -560,8 +560,8 @@ namespace UnitedWayPrototypeApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateContribution(ContributionModel model)
         {
-            // Try-Catch in case a non-existing cwid (not matching any on the db) is entered. Should throw the ExistingCwidError page and prompt for resubmission - MD
-            // May need to be adjusted. Currently, it could be throwing the ExistingCwidError page regardless of the error that is thrown on the create contribution page -MD
+            // Try-Catch in case of a non-existing cwid/agencyid (not matching any on the db) is entered. Should throw the Non-ExistingAgencyID_CWID page and prompt for resubmission. 
+            // Current build does not specify if it is the cwid or agencyID that does not match besides the automatically generated error message. - MD
 
             try
             {
@@ -572,18 +572,19 @@ namespace UnitedWayPrototypeApplication.Controllers
                     DataLibrary.BusinessLogic.ContributionProcessor.CreateContribution(model.UWType, model.UWMonthly, model.UWMonths, model.uwcontributionamount, model.UWYear,
                         model.CWID, model.AgencyID, model.CheckNumber, model.UWDateCreated, model.UWDateLastEdited);
                     return RedirectToAction("ContributionList");
+
                 }
 
                 ModelState.Clear();
                 return View();
 
             }
-            catch (Exception CWID)
+            catch (Exception AgencyID_CWID)
             {
-                return View("ExistingCwidError", new HandleErrorInfo(CWID, "ContributionModel", "CreateContribution"));
-            }
-        }
+                return View("Non-ExistingAgencyID_CWID", new HandleErrorInfo(AgencyID_CWID, "ContributionModel", "CreateContribution"));
 
+            } 
+}
         public ActionResult SortContributionList(string name)
         {
             ViewBag.Message = "Sort Contribution List";
