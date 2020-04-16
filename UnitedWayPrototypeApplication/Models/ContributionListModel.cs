@@ -38,7 +38,7 @@ namespace UnitedWayPrototypeApplication.Models
         [Display(Name = "Type of Contribution")]
         public string UWType { get; set; }
 
-        [Display(Name = "Check Number (optional)")]
+        [Display(Name = "Check Number")]
         public string CheckNumber { get; set; }
 
         [DataType(DataType.Currency)]
@@ -50,10 +50,21 @@ namespace UnitedWayPrototypeApplication.Models
         public int UWMonths { get; set; }
 
         [DataType(DataType.Currency)]
-        [Display(Name = "Total Contribution Amount")]
+        [Display(Name = "Total Contribution")]
         public double uwcontributionamount { get; set; }
 
         [Display(Name = "Giving Year")]
         public int UWYear { get; set; }
+
+        // Commented out in HTML
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:mm/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date of Contribution")]
+        public System.DateTime UWDateCreated { get; set; }
+
+        // Commented out in HTML
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of Last Edit")]
+        public System.DateTime UWDateLastEdited { get; set; } 
     }
 }

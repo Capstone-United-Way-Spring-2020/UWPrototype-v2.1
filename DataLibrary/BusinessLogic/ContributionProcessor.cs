@@ -49,8 +49,8 @@ namespace DataLibrary.BusinessLogic
 
         {
 
-            string sql = @"SELECT contributionid, C.cwid, C.uwdatecreated, C.uwdateedited, e.employeefirstname, e.employeelastname, d.departmentname, d.division,
-                            A.agencyname, C.uwtype, C.uwmonthly, C.uwmonths, C.uwcontributionamount, C.uwyear
+            string sql = @"SELECT contributionid, C.cwid, C.uwdatecreated, C.uwdateedited, C.checknumber, e.employeefirstname, e.employeelastname, d.departmentname, d.division,
+                            A.agencyname, C.uwtype, C.uwmonthly, C.uwmonths, C.uwcontributionamount, C.uwyear, C.uwdatecreated, C.uwdateedited
                             FROM Contribution (NOLOCK) C
                             INNER JOIN Employee (NOLOCK) E
                                 ON C.cwid = E.cwid

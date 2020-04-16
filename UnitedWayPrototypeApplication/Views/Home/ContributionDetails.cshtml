@@ -1,0 +1,92 @@
+﻿@model UnitedWayPrototypeApplication.Models.ContributionListModel
+
+@{
+    var contr = ViewData["Contribution"] as UnitedWayPrototypeApplication.Models.ContributionListModel;
+}
+
+    <div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.CWID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CWID, new { @Value = contr.CWID, @readonly = true })
+                @Html.ValidationMessageFor(model => model.CWID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EmployeeFirstName, new { @Value = contr.EmployeeFirstName, @readonly = true })
+                @Html.ValidationMessageFor(model => model.EmployeeFirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EmployeeLastName, new { @Value = contr.EmployeeLastName, @readonly = true })
+                @Html.ValidationMessageFor(model => model.EmployeeLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgencyName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AgencyName, new { @Value = contr.AgencyName, @readonly = true })
+                @Html.ValidationMessageFor(model => model.AgencyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UWType, new { @Value = contr.UWType, @readonly = true })
+                @Html.ValidationMessageFor(model => model.UWType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CheckNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CheckNumber, new { @Value = contr.CheckNumber, @readonly = true })
+                @Html.ValidationMessageFor(model => model.CheckNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWMonthly, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UWMonthly, new { @Value = contr.UWMonthly, @readonly = true })
+                @Html.ValidationMessageFor(model => model.UWMonthly, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWMonths, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UWMonths, new { @Value = contr.UWMonths, @readonly = true })                
+                @Html.ValidationMessageFor(model => model.UWMonths, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.uwcontributionamount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.uwcontributionamount, new { @Value = contr.uwcontributionamount, @readonly = true })                
+                @Html.ValidationMessageFor(model => model.uwcontributionamount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UWDateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UWDateCreated, new { @Value = contr.UWDateCreated.ToString("MM/dd/yyyy"), @class = "datepicker", @readonly = true})
+                @Html.ValidationMessageFor(model => model.UWDateCreated, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+<p>
+    @Html.ActionLink("Back", "ContributionList")
+</p>

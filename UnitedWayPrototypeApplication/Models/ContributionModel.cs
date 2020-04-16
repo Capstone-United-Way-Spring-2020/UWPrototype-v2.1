@@ -20,18 +20,7 @@ namespace UnitedWayPrototypeApplication.Models
         [Required(ErrorMessage = "You must enter an employee CWID.")]
         [ForeignKey("CWID")]
         public int CWID { get; set; }
-        /*
-        [DataType(DataType.Text)]
-        [Display(Name = "Employee First Name")]
-        [Required(ErrorMessage = "You must enter an employee first name.")]
-        public string contributionfname { get; set; }
 
-        [DataType(DataType.Text)]
-        [Display(Name = "Employee Last Name")]
-        [Required(ErrorMessage = "You must enter an employee last name.")]
-        public string contributionlname { get; set; }
-        */
-     //   [DataType(DataType.Text)]
         [Display(Name = "Agency ID")]
         [Required(ErrorMessage = "You must enter an Agency ID (Enter '0' if there is no agency).")]
         [Range(0,10000000, ErrorMessage = "Agency ID must be valid (Enter '0' if there is no agency).")]

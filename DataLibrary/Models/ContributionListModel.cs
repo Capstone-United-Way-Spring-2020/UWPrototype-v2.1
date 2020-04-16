@@ -16,9 +16,16 @@ namespace DataLibrary.Models
         public string DepartmentName { get; set; }
         public string AgencyName { get; set; }
         public string UWType { get; set; }
+        public string CheckNumber { get; set; }
         public double UWMonthly { get; set; }
         public int UWMonths { get; set; }
         public double uwcontributionamount { get; set; }
         public int UWYear { get; set; }
+
+        // Commented out in HTML]
+        public System.DateTime UWDateCreated { get; set; }
+
+        // Commented out in HTML
+        public System.DateTime UWDateLastEdited { get; set; } 
     }
 }

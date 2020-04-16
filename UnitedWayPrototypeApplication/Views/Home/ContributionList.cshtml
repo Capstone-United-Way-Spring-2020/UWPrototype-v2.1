@@ -109,6 +109,7 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "EditContribution", new { contributionid = item.ContributionID }, null) |
+                        @Html.ActionLink("Info", "ContributionDetails", new { contributionid = item.ContributionID }, null) |
                         @Html.ActionLink("Delete", "DeleteContribution", new { contributionid = item.ContributionID }, null)
                     </td>
                 </tr>

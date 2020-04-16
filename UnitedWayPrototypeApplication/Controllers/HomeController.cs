@@ -532,10 +532,13 @@ namespace UnitedWayPrototypeApplication.Controllers
                     DepartmentName = row.DepartmentName,
                     AgencyName = row.AgencyName,
                     UWType = row.UWType,
+                    CheckNumber = row.CheckNumber,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
                     uwcontributionamount = row.uwcontributionamount,
-                    UWYear = row.UWYear
+                    UWYear = row.UWYear,
+                    UWDateCreated = row.UWDateCreated,
+                    UWDateLastEdited = row.UWDateLastEdited
                 });
             }
 
@@ -552,8 +555,6 @@ namespace UnitedWayPrototypeApplication.Controllers
                 return View(contributionlist);
             }
 
-
-            // View(contributionlist);
         }
 
         public ActionResult EnterCwid()
@@ -668,10 +669,13 @@ namespace UnitedWayPrototypeApplication.Controllers
                     DepartmentName = row.DepartmentName,
                     AgencyName = row.AgencyName,
                     UWType = row.UWType,
+                    CheckNumber = row.CheckNumber,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
                     uwcontributionamount = row.uwcontributionamount,
-                    UWYear = row.UWYear
+                    UWYear = row.UWYear,
+                    UWDateCreated = row.UWDateCreated,
+                    UWDateLastEdited = row.UWDateLastEdited
                 });
             }
             switch (name)
@@ -738,10 +742,13 @@ namespace UnitedWayPrototypeApplication.Controllers
                     DepartmentName = row.DepartmentName,
                     AgencyName = row.AgencyName,
                     UWType = row.UWType,
+                    CheckNumber = row.CheckNumber,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
                     uwcontributionamount = row.uwcontributionamount,
-                    UWYear = row.UWYear
+                    UWYear = row.UWYear,
+                    UWDateCreated = row.UWDateCreated,
+                    UWDateLastEdited = row.UWDateLastEdited
                 });
             }
 
@@ -787,6 +794,50 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View(contributiondisplay);
         }
 
+        public ActionResult ContributionDetails(string contributionid)
+        {
+            ViewBag.Message = "Sort Descending Contribution List";
+
+            ContributionListModel contr = new UnitedWayPrototypeApplication.Models.ContributionListModel();
+            int cid = Int32.Parse(contributionid);
+            //utilizing the SQL SELECT statements in ContributionProcessor to LOAD the contributions
+            var data = DataLibrary.BusinessLogic.ContributionProcessor.LoadContributionList();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<ContributionListModel> contributiondisplay = new List<ContributionListModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                contributiondisplay.Add(new ContributionListModel
+                {
+                    ContributionID = row.ContributionID,
+                    CWID = row.CWID,
+                    EmployeeFirstName = row.EmployeeFirstName,
+                    EmployeeLastName = row.EmployeeLastName,
+                    Division = row.Division,
+                    DepartmentName = row.DepartmentName,
+                    AgencyName = row.AgencyName,
+                    UWType = row.UWType,
+                    CheckNumber = row.CheckNumber,
+                    UWMonthly = row.UWMonthly,
+                    UWMonths = row.UWMonths,
+                    uwcontributionamount = row.uwcontributionamount,
+                    UWYear = row.UWYear,
+                    UWDateCreated = row.UWDateCreated,
+                    UWDateLastEdited = row.UWDateLastEdited
+                });
+            }
+            foreach (var row in contributiondisplay)
+            {
+                if (row.ContributionID == cid)
+                {
+                    contr = row;
+                }
+            }
+
+            ViewData["Contribution"] = contr;
+
+            return View();
+        }
         public ActionResult EditContribution(string contributionid)
         {
             ViewBag.Message = "Edit Contribution";
@@ -807,7 +858,6 @@ namespace UnitedWayPrototypeApplication.Controllers
                     UWType = row.UWType,
                     UWMonthly = row.UWMonthly,
                     UWMonths = row.UWMonths,
-                    //    uwcontributionamount = row.uwcontributionamount,
                     UWYear = row.UWYear,
                     CWID = row.CWID,
                     AgencyID = row.AgencyID,
