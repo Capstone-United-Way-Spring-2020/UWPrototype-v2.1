@@ -58,5 +58,21 @@ namespace DataLibrary.BusinessLogic
             return SQLDataAccess.SaveData(sql, data);
         }
 
+        public static int DeleteAgency(int agencyID, string agencyName, bool agencyStatus, DateTime agencyDateCreated, DateTime agencyDateLastEdited)
+        {
+            AgencyModel data = new AgencyModel
+            {
+                AgencyID = agencyID,
+                AgencyName = agencyName,
+                AgencyStatus = agencyStatus,
+                AgencyDateCreated = agencyDateCreated,
+                AgencyDateLastEdited = agencyDateLastEdited
+            };
+
+            string sql = @"DELETE FROM Agency
+                           WHERE agencyid = @AgencyID;";
+
+            return SQLDataAccess.SaveData(sql, data);
+        }
     }
 }

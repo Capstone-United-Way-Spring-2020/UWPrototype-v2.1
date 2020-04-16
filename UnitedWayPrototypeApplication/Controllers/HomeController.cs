@@ -479,6 +479,89 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View();
         }
 
+        public ActionResult DeleteAgency(string agencyid)
+        {
+            ViewBag.Message = "Delete Agency";
+
+            AgencyModel agency = new UnitedWayPrototypeApplication.Models.AgencyModel();
+
+            int aid = Int32.Parse(agencyid);
+
+            var data = DataLibrary.BusinessLogic.AgencyProcessor.LoadAgencies();
+
+            List<AgencyModel> agencies = new List<AgencyModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                agencies.Add(new AgencyModel
+                {
+                    AgencyID = row.AgencyID,
+                    AgencyName = row.AgencyName,
+                    AgencyStatus = row.AgencyStatus,
+                    AgencyDateCreated = row.AgencyDateCreated,
+                    AgencyDateLastEdited = row.AgencyDateLastEdited
+                });
+            }
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            //create new row for each record
+            foreach (var row in agencies)
+            {
+                if (row.AgencyID == aid)
+                {
+                    agency = row;
+                }
+            }
+
+            ViewData["Agency"] = agency;
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteAgency(AgencyModel model)
+        {
+            var data = DataLibrary.BusinessLogic.ContributionProcessor.LoadContributions();
+            ContributionModel contr = new UnitedWayPrototypeApplication.Models.ContributionModel();
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            List<ContributionModel> contributions = new List<ContributionModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                contributions.Add(new ContributionModel
+                {
+                    ContributionID = row.ContributionID,
+                    UWType = row.UWType,
+                    UWMonthly = row.UWMonthly,
+                    UWMonths = row.UWMonths,
+                    //  uwcontributionamount = row.uwcontributionamount,
+                    UWYear = row.UWYear,
+                    CWID = row.CWID,
+                    AgencyID = row.AgencyID,
+                    CheckNumber = row.CheckNumber,
+                    UWDateCreated = row.UWDateCreated,
+                    UWDateLastEdited = row.UWDateLastEdited
+                });
+            }
+            foreach (var row in contributions)
+            {
+                if (row.AgencyID == model.AgencyID)
+                {
+                    contr = row;
+                    DataLibrary.BusinessLogic.ContributionProcessor.UpdateContributionAgency(contr.ContributionID, contr.UWType, contr.UWMonthly, contr.UWMonths, contr.uwcontributionamount, contr.UWYear,
+                        contr.CWID, contr.AgencyID, contr.CheckNumber, contr.UWDateCreated, contr.UWDateLastEdited);
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                DataLibrary.BusinessLogic.AgencyProcessor.DeleteAgency(model.AgencyID, model.AgencyName, model.AgencyStatus, model.AgencyDateCreated, model.AgencyDateLastEdited);
+   
+                return RedirectToAction("Agency");
+            }
+            return View();
+        }
+
 
         public ActionResult Contribution()
         {

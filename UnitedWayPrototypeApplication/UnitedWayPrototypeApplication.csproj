@@ -344,6 +344,7 @@
     <Content Include="Views\Shared\NonExistingAgencyidCWID.cshtml" />
     <Content Include="Views\Shared\NonExistingOrgCode.cshtml" />
     <Content Include="Views\Home\ContributionDetails.cshtml" />
+    <Content Include="Views\Home\DeleteAgency.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

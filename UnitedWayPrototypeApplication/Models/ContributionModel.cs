@@ -23,8 +23,8 @@ namespace UnitedWayPrototypeApplication.Models
 
         [Display(Name = "Agency ID")]
         [Required(ErrorMessage = "You must enter an Agency ID (Enter '0' if there is no agency).")]
-        [Range(0,10000000, ErrorMessage = "Agency ID must be valid (Enter '0' if there is no agency).")]
-        public int AgencyID { get; set; }
+        [Range(0, 10000000, ErrorMessage = "Agency ID must be valid (Enter '0' if there is no agency).")]
+        public int AgencyID { get; set; } = 0;
 
         [Display(Name = "Type of Contribution")]
         [Required(ErrorMessage = "You must select a contribution type.")]
