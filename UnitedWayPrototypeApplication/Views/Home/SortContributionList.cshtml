@@ -19,6 +19,9 @@
         <table class="table">
             <tr>
                 <th>
+                    @Html.ActionLink("Contribution ID", "SortDescendingContributionList", "Home", new { name = "ContributionID" }, null)
+                </th>
+                <th>
                     @Html.ActionLink("CWID", "SortDescendingContributionList", "Home", new { name = "CWID" }, null)
                 </th>
                 <th>
@@ -64,6 +67,9 @@
                 foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContributionID)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CWID)
                         </td>
