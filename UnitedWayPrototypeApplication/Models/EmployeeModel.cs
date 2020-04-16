@@ -48,7 +48,7 @@ namespace UnitedWayPrototypeApplication.Models
         public string Payroll { get; set; }
 
         [Display(Name = "Salary")]
-        public int Salary { get; set; }
+        public int? Salary { get; set; } 
 
         [Display(Name = "PO Box")]
         public int POBox { get; set; }

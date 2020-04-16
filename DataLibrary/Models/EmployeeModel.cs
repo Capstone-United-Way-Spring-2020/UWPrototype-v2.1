@@ -21,7 +21,7 @@ namespace DataLibrary.Models
         public string EmployeeState { get; set; }
         public string EmployeeZip { get; set; }
         public string Payroll { get; set; }
-        public int Salary { get; set; }
+        public int? Salary { get; set; }
         public int POBox { get; set; }
         public string POBoxCity { get; set; }
         public string POBoxState { get; set; }

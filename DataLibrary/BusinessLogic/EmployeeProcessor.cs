@@ -11,7 +11,7 @@ namespace DataLibrary.BusinessLogic
     public class EmployeeProcessor
     {
         public static int CreateEmployee(int empCWID, string firstName, string lastName, string empMI, 
-            string streetAddress, string empCity, string empState, string empZip, string payroll, int salary, 
+            string streetAddress, string empCity, string empState, string empZip, string payroll, int? salary, 
             int empPoBox, string empPoBoxCity, string empPoBoxState, int empOrgCode, string empDepartment, 
             bool empStatus, DateTime empDateCreated, DateTime empDateEdited)
         {
@@ -53,7 +53,7 @@ namespace DataLibrary.BusinessLogic
         }
 
         public static int EditEmployee(int empCWID, string firstName, string lastName, string empMI,
-            string streetAddress, string empCity, string empState, string empZip, string payroll, int salary,
+            string streetAddress, string empCity, string empState, string empZip, string payroll, int? salary,
             int empPoBox, string empPoBoxCity, string empPoBoxState, int empOrgCode, string empDepartment,
             bool empStatus, DateTime empDateCreated, DateTime empDateEdited)
         {
