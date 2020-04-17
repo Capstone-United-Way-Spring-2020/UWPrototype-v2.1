@@ -68,6 +68,8 @@
     {
         foreach (var item in Model)
         {
+            if (item.EmployeeStatus == true)
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.CWID)
@@ -113,9 +115,10 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "EditEmployee", new { cwid = item.CWID }, null) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Delete", "DeleteEmployee", new { cwid = item.CWID }, null)
                 </td>
             </tr>
+            }
         }
     }
 

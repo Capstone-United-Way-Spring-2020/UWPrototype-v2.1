@@ -73,11 +73,11 @@ namespace DataLibrary.BusinessLogic
         public static List<DepartmentReportModel> LoadDepartmentReport()
 
         {
-
             string sql = @"SELECT d.division, SUM(c.uwcontributionamount) AS CurrTotal, ((SUM(c.uwcontributionamount)) / (COUNT(DISTINCT(c.cwid)))) AS CurrAvg,
 		                            COUNT(DISTINCT(c.cwid)) AS DonorCount, COUNT(e.cwid) AS EmployeeCount, ROUND((COUNT(DISTINCT(c.cwid)) * 100.00 / COUNT(e.cwid)),2) AS PercentParticipation
                             FROM Department as d JOIN Employee as e ON (d.orgcode = e.orgcode)
 	                               LEFT JOIN Contribution c ON (e.cwid = c.cwid)
+                            WHERE e.employeestatus = 1
                             GROUP BY d.division;";
 
             return SQLDataAccess.LoadData<DepartmentReportModel>(sql);

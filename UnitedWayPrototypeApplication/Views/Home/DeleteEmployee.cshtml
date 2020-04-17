@@ -1,0 +1,107 @@
+﻿@model UnitedWayPrototypeApplication.Models.EmployeeModel
+
+
+@{
+    var emp = ViewData["Employee"] as UnitedWayPrototypeApplication.Models.EmployeeModel;
+}
+
+    <h3>By deleting this employee they will no longer be considered in division reports. Are you sure you want to delete this employee?</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.CWID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CWID, new { htmlAttributes = new { @class = "form-control", @Value = emp.CWID, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.CWID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OrgCode, new { htmlAttributes = new { @class = "form-control", @Value = emp.OrgCode, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.OrgCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeFirstName, new { htmlAttributes = new { @class = "form-control", @Value = emp.EmployeeFirstName, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.EmployeeFirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeLastName, new { htmlAttributes = new { @class = "form-control", @Value = emp.EmployeeLastName, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.EmployeeLastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StreetAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StreetAddress, new { htmlAttributes = new { @class = "form-control", @Value = emp.StreetAddress, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.StreetAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeCity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeCity, new { htmlAttributes = new { @class = "form-control", @Value = emp.EmployeeCity, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.EmployeeCity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeState, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeState, new { htmlAttributes = new { @class = "form-control", @Value = emp.EmployeeState, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.EmployeeState, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeZip, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeZip, new { htmlAttributes = new { @class = "form-control", @Value = emp.EmployeeZip, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.EmployeeZip, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.POBoxCity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.POBoxCity, new { htmlAttributes = new { @class = "form-control", @Value = emp.POBoxCity, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.POBoxCity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.POBoxState, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.POBoxState, new { htmlAttributes = new { @class = "form-control", @Value = emp.POBoxState, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.POBoxState, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Employee")
+</div>

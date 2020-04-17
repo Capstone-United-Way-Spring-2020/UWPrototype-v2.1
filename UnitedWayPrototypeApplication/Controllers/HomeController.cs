@@ -331,6 +331,7 @@ namespace UnitedWayPrototypeApplication.Controllers
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditEmployee(EmployeeModel model)
@@ -343,6 +344,64 @@ namespace UnitedWayPrototypeApplication.Controllers
                 return RedirectToAction("Employee");
             }
             return View();
+        }
+        
+        public ActionResult DeleteEmployee(string cwid)
+        {
+            EmployeeModel emp = new UnitedWayPrototypeApplication.Models.EmployeeModel();
+
+            int Cwid = Int32.Parse(cwid);
+
+            var data = DataLibrary.BusinessLogic.EmployeeProcessor.LoadEmployees();
+
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            //create new row for each record
+            foreach (var row in data)
+            {
+                employees.Add(new EmployeeModel
+                {
+                    CWID = row.CWID,
+                    EmployeeFirstName = row.EmployeeFirstName,
+                    EmployeeLastName = row.EmployeeLastName,
+                    EmployeeMI = row.EmployeeMI,
+                    StreetAddress = row.StreetAddress,
+                    EmployeeCity = row.EmployeeCity,
+                    EmployeeState = row.EmployeeState,
+                    EmployeeZip = row.EmployeeZip,
+                    EmployeeDepartment = row.EmployeeDepartment,
+                    OrgCode = row.OrgCode,
+                    EmployeeStatus = row.EmployeeStatus,
+                    EmployeeDateCreated = row.EmployeeDateCreated,
+                    EmployeeLastEdited = row.EmployeeLastEdited,
+                    Payroll = row.Payroll,
+                    Salary = row.Salary,
+                    POBox = row.POBox,
+                    POBoxCity = row.POBoxCity,
+                    POBoxState = row.POBoxState
+                });
+            }
+            //using the SQL SELECT statements in ContributionProcessor to LOAD the contributions to a list
+            //create new row for each record
+            foreach (var row in employees)
+            {
+                if (row.CWID == Cwid)
+                {
+                    emp = row;
+                }
+            }
+
+            ViewData["Employee"] = emp;
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteEmployee(EmployeeModel model)
+        {
+            model.EmployeeStatus = false;
+            DataLibrary.BusinessLogic.EmployeeProcessor.EditEmployee(model.CWID, model.EmployeeFirstName, model.EmployeeLastName, model.EmployeeMI, model.StreetAddress, model.EmployeeCity, model.EmployeeState, model.EmployeeZip,
+                    model.Payroll, model.Salary, model.POBox, model.POBoxCity, model.POBoxState, model.OrgCode, model.EmployeeDepartment, model.EmployeeStatus, model.EmployeeDateCreated, model.EmployeeLastEdited);
+            return RedirectToAction("Employee");
         }
 
         public ActionResult Agency()

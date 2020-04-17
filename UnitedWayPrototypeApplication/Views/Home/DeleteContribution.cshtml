@@ -1,4 +1,5 @@
 ﻿@model UnitedWayPrototypeApplication.Models.ContributionModel
+<a href="~/Views/Home/DeleteContribution.cshtml">~/Views/Home/DeleteContribution.cshtml</a>
 
 <h3>Are you sure you want to delete this?</h3>
 
@@ -8,69 +9,69 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ContributionID)
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ContributionID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CWID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CWID, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.CWID } })
-                @Html.ValidationMessageFor(model => model.CWID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AgencyID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AgencyID, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.AgencyID } })
-                @Html.ValidationMessageFor(model => model.AgencyID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UWType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UWType, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWType } })
-                @Html.ValidationMessageFor(model => model.UWType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UWMonthly, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UWMonthly, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWMonthly } })
-                @Html.ValidationMessageFor(model => model.UWMonthly, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UWMonths, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UWMonths, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWMonths } })
-                @Html.ValidationMessageFor(model => model.UWMonths, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UWYear, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UWYear, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWYear } })
-                @Html.ValidationMessageFor(model => model.UWYear, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Delete" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CWID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CWID, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.CWID } })
+            @Html.ValidationMessageFor(model => model.CWID, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AgencyID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AgencyID, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.AgencyID } })
+            @Html.ValidationMessageFor(model => model.AgencyID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UWType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UWType, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWType } })
+            @Html.ValidationMessageFor(model => model.UWType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UWMonthly, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UWMonthly, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWMonthly } })
+            @Html.ValidationMessageFor(model => model.UWMonthly, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UWMonths, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UWMonths, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWMonths } })
+            @Html.ValidationMessageFor(model => model.UWMonths, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UWYear, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UWYear, new { htmlAttributes = new { @class = "form-control", @readonly = true, @Value = contr.UWYear } })
+            @Html.ValidationMessageFor(model => model.UWYear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 <div>
     @Html.ActionLink("Back to List", "ContributionList")
